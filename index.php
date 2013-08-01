@@ -369,7 +369,7 @@ var google_remarketing_only = true;
             </tr>
             <tr>
                 <td style="padding-top:40px; padding-bottom:40px; text-align:center;">
-                    <input type="sunmit" class="button" name="btnConfirm" value="提交" />
+                    <input type="submit" class="button" value="提交" />
                     <span style="padding-left:20px; color:Red;">*</span> <a href="./FormTemplate/140/CN_PRIVACYPOLICY.html" target="_blank">隐私条款</a>
                 </td>
             </tr>

@@ -53,12 +53,38 @@ if(!empty($_POST['selTitle']))
 	}
 	if(!empty($_POST['txtTelArea'])){
 		$txtTelArea = $_POST['txtTelArea'];
-		//get PostalCode（获取邮编）
-		if(!empty($_POST['txtFax'])){
-			$txtFax = $_POST['txtFax'];
-			//get Fax（获取电话号）
-		}
+		//get tel area（获取电话区号）
 	}
+	if(!empty($_POST['txtTel'])){
+		$txtTel = $_POST['txtTel'];
+		//get tel（获取电话号）
+	}
+	
+	if(!empty($_POST['txtFaxArea'])){
+		$txtFaxArea = $_POST['txtFaxArea'];
+		//get fax area（获取传真区号）
+	}
+	if(!empty($_POST['txtFax'])){
+		$txtFax = $_POST['txtFax'];
+		//get fax (获取传真)
+	}
+	if(!empty($_POST['txtMobile'])){
+		$txtMobile = $_POST['txtMobile'];
+		//get mobile（获取手机号）
+	}
+	if(!empty($_POST['txtConfirmEmail'])){
+		$txtConfirmEmail = $_POST['txtConfirmEmail'];
+		//get email （获取邮箱）
+	}
+	if(!empty($_POST['txtIM'])){
+		$txtIM = $_POST['txtIM'];
+		//get QQ (获取QQ号)
+	}
+	if(!empty($_POST['txtWebsite'])){
+		$txtWebsite = $_POST['txtWebsite'];
+		//get websit（获取公司网址）
+	}
+	/*
 	echo "您好".$txtLastName.$txtFirstName.$selTitle.$txtCompany;
 	echo "<br/>";
 	echo "国家/地区：".$radCountry;
@@ -73,7 +99,16 @@ if(!empty($_POST['selTitle']))
 	echo "<br/>";
 	echo "区号：".$txtTelArea;
 	echo "<br/>";
-	echo "区号：".$txtFax;
+	echo "电话号：".$txtTelArea."-".$txtTel;
+	echo "<br/>";
+	echo "传真号：".$txtFaxArea."-".$txtFax;
+	echo "<br/>";
+	echo "手机号：".$txtMobile;
+	echo "<br/>";
+	echo "邮箱号：".$txtConfirmEmail;
+	echo "<br/>";
+	echo "邮箱号：".$txtIM;
+	*/
 ?>
 </form>
 </body>

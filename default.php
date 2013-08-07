@@ -6,7 +6,6 @@
     <link href="css/cn_step.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<p>提交的数据:</p>
 <?php 
 if(!empty($_POST['selTitle']))
 	{
@@ -84,32 +83,25 @@ if(!empty($_POST['selTitle']))
 		$txtWebsite = $_POST['txtWebsite'];
 		//get websit（获取公司网址）
 	}
-	/*
-	echo "您好".$txtLastName.$txtFirstName.$selTitle.$txtCompany;
-	echo "<br/>";
-	echo "国家/地区：".$radCountry;
-	echo "<br/>";
-	echo "省份：".$selProvince;
-	echo "<br/>";
-	echo "城市：".$txtCity;
-	echo "<br/>";
-	echo "地址：".$txtAddress;
-	echo "<br/>";
-	echo "邮编：".$txtPostalCode;
-	echo "<br/>";
-	echo "区号：".$txtTelArea;
-	echo "<br/>";
-	echo "电话号：".$txtTelArea."-".$txtTel;
-	echo "<br/>";
-	echo "传真号：".$txtFaxArea."-".$txtFax;
-	echo "<br/>";
-	echo "手机号：".$txtMobile;
-	echo "<br/>";
-	echo "邮箱号：".$txtConfirmEmail;
-	echo "<br/>";
-	echo "邮箱号：".$txtIM;
-	*/
-?>
+	if(!empty($_POST['chkQuestion1'])){
+		$chkQuestion1 = $_POST['chkQuestion1'];
+		//get profession（获取业务性质）
+	}
+	if(!empty($_POST['chkQuestion2'])){
+		$chkQuestion2 = $_POST['chkQuestion2'];
+		//get objective (获取用户参展目的)
+	}
+	if(!empty($_POST['chkQuestion3'])){
+		$chkQuestion3 = $_POST['chkQuestion3'];
+		//get interest （获取用户感兴趣产品）
+	}
+	if(!empty($_POST['chkQuestion4'])){
+		$chkQuestion4 = $_POST['chkQuestion4'];
+		//get road （获取用户了解途径）
+	}
+	require "include/write_mysql.php";
+	wirte_in_mysql($selTitle,$txtLastName,$txtFirstName,$txtJob,$txtCompany,$radCountry,$selProvince,$txtCity,$txtAddress,$txtPostalCode,$txtTelArea,$txtTel,$txtFaxArea,$txtFax,$txtMobile,$txtConfirmEmail,$txtIM,$txtWebsite,$chkQuestion1,$chkQuestion2,$chkQuestion3,$chkQuestion4);
+?>	
 </form>
 </body>
 </html>

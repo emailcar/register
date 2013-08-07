@@ -8,16 +8,11 @@
             margin: 0;
             padding: 0;
             background: #efefef;
-            FITLEER:
-            progind:DXImageTransform.Microsoft.Gradient(startColorStr=#efefef, endColorStr=#ffffff, gradientType=0);
-            background: -moz-linear-gradient(left,#efefef,rgba(255,255,255,0.5));
-            background: -webkit-gradient(linear,0% 0% ,100% 0% , from(#efefef),to(rgba(255, 255, 255, 0.5)));
-        }
+            }
             body
             {
-                margin: 0 auto;
+                margin: 0 60px;
                 padding: 0;
-               
                 width: 960px;
                 color: #2f2f2f;
                 font-family: tahoma,arial,'宋体';
@@ -26,18 +21,14 @@
             {
                 border-top: 1px solid #e0e0e0;
             }
-            #page_left
-            {
-                float: left;
-                
+            #login_c {
+                border: 1px solid #E7E7E7;
+                margin: 50px 100px;
+                padding: 20px;
+                width: 300px;
+                background: #F0F0F0;
             }
-            .post_content{
-                line-height: 160%;
-                letter-spacing: 2px;
-                text-indent: 30px;
-                margin: 10px;
-                width: 70%;
-            }
+
             h1
             {
                 font-size: 1.2em;
@@ -51,17 +42,14 @@
             li{
                 list-style: none;
             }
-            #page_content {
-            float: right;
-            margin: 0px 439px 0 0px;
-            padding: 0;
-            border-left: 1px solid #8F2323;
-            }
+           
             #footer 
             {
                 clear: both;
-                margin: 0 300px 20px 0px;
-                padding: 0 0 20px 0;
+            }
+             #footer .footer_title {
+                font-size: 12px;
+                padding: 20px 0px 10px 590px;
             }
             div,a,ul,li,p,img{
             	margin: 0;
@@ -82,70 +70,51 @@
                 font-size: 12px;
             }
 /*以上是系统所有页面都使用的css*/
-
-#main_meun li {
-    font-size: 12px;
-    width: 200px;
-    padding: 15px 0px 10px 20px;
-    margin: 0;
-    border-top: 1px solid #fff;
-    border-bottom: 1px solid #ccc;
-    display: block;
+/*admin.php页面使用的css*/
+    #main_meun li {
+        font-size: 12px;
+        width: 200px;
+        padding: 15px 0px 10px 20px;
+        margin: 0;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #ccc;
+        display: block;
+        }
+    #main_meun li:hover{
+        background:#AFAFAF;
     }
-#main_meun li:hover{
-    background:#fff;
-}
-#main_meun li a{
-    margin: 0 0 0 0;
-    padding: 0;
-}
+    #main_meun li a{
+        margin: 0 0 0 0;
+        padding: 0;
+    }
+    #main_meun li img {
+        margin: 0 5px 0 0;
+        padding: 0;
+    }
+                #page_left
+            {
+                float: left;
+            }
+            .post_content{
+                line-height: 160%;
+                letter-spacing: 2px;
+                text-indent: 30px;
+                margin: 10px;
+                width: 70%;
+            }
+     #page_content {
+            float: right;
+            margin: 0px 37px 0 0px;
+            padding: 0;
+           
+            }
 /*这是admin中welocme页面的css*/
 	#navight li{
 		float: left;
 		margin: 5px;
 		position:relative;
 	}
-	div #nav_g_one
-	{
-		animation: nav_g_one 5s 1;
-		-moz-animation: nav_g_one 5s 1;
-		-webkit-animation: nav_g_one 5s 1;
-		-o-animation: nav_g_one 5s 1;
-	}
-	@keyframes nav_g_one {
-		0% {	
-				transform: rotatey(0deg);
-			}
-		50% {	
-				transform: rotatey(180deg);
-			}
-		100%{	
-				transform: rotatey(360deg);
-			}
-	}
-	@-webkit-keyframes nav_g_one　{
-		0% {
-			-webkit-transform: rotate(0deg);
-		}
-		25% {
-			-webkit-transform: rotate(90deg);
-		}
-		50% {
-			-webkit-transform: rotate(180deg);
-		}
-		75% {
-			-webkit-transform: rotate(270deg);
-		}
-		100%{
-			-webkit-transform: rotate(0deg);
-		}
-	}
 	
-	@-moz-keyframes nav_g_one {
-		0% {
-			-moz-transform: rotatey(0deg);
-		}
-	}
 	#navight li.nav-g a{
 		display: block;
 		width: 100px;
@@ -167,3 +136,4 @@
     .select {
         width: 150px;
     }
+

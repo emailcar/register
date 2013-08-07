@@ -7,6 +7,14 @@
         <meta charset="utf-8">
         <title>登陆</title>
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <style type="text/css">
+        body {
+        	margin: 0 auto;
+        }
+        input {
+        	margin: 10px 0px 10px 20px;
+        }
+        </style>
         <script src="js/query_password.js"></script>
     </head>
 <body>
@@ -15,6 +23,7 @@
 </div><!--end header tag-->
 <div id="content">
 	<div id="left">
+		<div id="login_c">
 		<?php 
 		if (isset($_POST['wp_submit']))
 		{
@@ -74,13 +83,13 @@
 					<form name="logoinform"  id="loginform" action="login.php" method="post" onsubmit="return login_user()">
 						<p>
 							<label for="user_login">
-								用户名<br/>
+								用户名：<br/>
 								<input type="text" name="login_name" id="user_login" class="input" value size="20">
 							</label>
 						</p>
 						<p>
 							<label for="user_pass">
-								密码<br/>
+								密码：<br/>
 								<input type="password" name="login_password" id="user_password" class="input" value size="20">
 							</label>
 						</p>
@@ -91,5 +100,6 @@
 					</form>';
 				}
 		?>
+	</div><!--end login_c tag-->
 	</div><!--end left tag-->
 	<?php include('footer.php'); ?>

@@ -36,5 +36,6 @@ $copyright_list = 'http://www.iscod.com';//版权博客网址
 	$user_objective = $user_news['21'];
 	$user_interest = $user_news['22'];
 	$user_road = $user_news['23'];
+	$user_sign = $user_news['24'];
 //
 ?>

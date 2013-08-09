@@ -14,7 +14,7 @@
             <li id="mian_meun_i"><img src="images/icon_home.png"/>后台主页</li>
             <li id="mian_meun_t"><img src="images/icon_pages.png"/>今日预登记</li>
             <li id="mian_meun_a"><img src="images/icon_posts.png"/>登记记录</li>
-            <li id="mian_meun_i"><img src="images/icon_pages.png"/>账户管理</li>
+            <li id="mian_meun_m"><img src="images/icon_pages.png"/>账户管理</li>
         </ul>
     </div><!--end page_left tag-->
     <div id="page_content">

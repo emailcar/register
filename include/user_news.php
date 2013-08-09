@@ -17,7 +17,16 @@
 					echo "信息ID:";
 					echo $_REQUEST['user_id']; ?>
 			</h3>
-			<div id="new_delete"><a href="#">删除</a></div>
+			<?php
+				$user_sign = $_REQUEST['user_sign'];
+				if($user_sign==0){
+					echo '<div class="n_sign_bg" style="margin:-20px 0 0 550px;"><a href="#" title="添加标记">标记</a></div>';
+				}else {
+					echo '<div id="sign_number">标记员：'.$user_sign.'</div>';
+					echo '<div class="sign_bg" style="margin:-20px 0 0 550px;"><a href="#" title="取消标记">取消标记</a></div>';
+				}
+			?>
+			<div id="new_delete_a" class="new_delete"><a href="#">删除</a></div>
 		</div><!--end _h_cont tag-->
 <?php
 $user_id = $_REQUEST['user_id'];

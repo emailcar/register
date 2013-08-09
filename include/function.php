@@ -41,12 +41,24 @@
 					for($i=0;$i<$number_a;$i++){
 						$user_news = mysql_fetch_array($f,MYSQL_NUM);
 						require 'common.inc';
-							echo '<li id="user_news_'.$id.'" class="user_news" value="'.$id.'">';
-								echo '<a href="user_news.php?user_id='.$id.'">';
-									echo '<p><input type="checkbox" value="1" name="box"/>';
-										echo '&nbspID号：'.$id.' 称呼：'.$user_last_name.$user_first_name.'-'.$user_title.' 职位：'.$user_job .' 手机号：'.$user_mobile.'';
-									echo '<p style="margin: 0px 0 0 25px;"> 公司：'.$user_company.' 电话：'.$user_tel_area.'-'.$user_tel.' 电子邮件：'.$user_email = $user_news['16'].' </p>';
-							echo '</a></li>';
+						echo '<li id="user_news_'.$id.'" class="user_news" value="'.$id.'">';
+							echo '<ul>';
+								echo '<a href="user_news.php?user_id='.$id.'&user_sign='.$user_sign.'">';
+									echo '<li><input type="checkbox" value="'.$id.'" name="box"/></li>';
+									echo '<li>ID号：'.$id.'<br>'.$user_date.'</li>';
+									echo '<li>称呼：'.$user_last_name.$user_first_name.'<br/>职位：'.$user_job .'</li>';
+								echo '</a>';
+									echo '<li>手机号：'.$user_mobile.'<br/>电子邮箱：'.$user_email.'</li>';
+									echo '<li>公司：'.$user_company.'<br/>电话：'.$user_tel_area.'-'.$user_tel.'</li>';
+									if($user_sign==0){
+										echo '<li><div class="n_sign_bg"><a href="#" title="添加标记">标记</a></div></li>';
+										
+									}else {
+										echo '<li><div class="sign_bg"><a href="#" title="取消标记">取消标记</a></div></li>';
+									}
+									echo '<li><div class="new_delete"><a href="#" title="删除">删除</a></div></li>';
+							echo '</ul>';
+						echo '</li>';
 					}
 				}
 				if($print_number==''){

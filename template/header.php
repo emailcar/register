@@ -14,8 +14,7 @@
         body{
             font-family: "宋体","Times New Roman",Georgia,Serif;
         }
-
-        
+        /***
         #header h1{
             font-size: 1em;
             font-weight: 700;
@@ -63,6 +62,7 @@
         li#print_p:hover{
             background: #fff;
         }
+        **/
     </style>
         <link href="css/style.css" rel="stylesheet" type="text/css" />
         <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>

@@ -1,21 +1,21 @@
-/*style.css
-*author: 千山万水;
-*blogs: http://www.caijulixia.com;
-*/
+/*******Powered by 韵贵科技***********/
+/*******author iscod******************/
+/*******blog www.iscod.com************/
 /*下面这段css所有页面引用的*/
  html
         {
             margin: 0;
             padding: 0;
-            background: #efefef;
+            background: url(../images/bg.png);
             }
             body
             {
+                background: url(../images/bg.png);
                 margin: 0 60px;
                 padding: 0;
                 width: 960px;
                 color: #2f2f2f;
-                font-family: tahoma,arial,'宋体';
+                font-family: arial,'宋体';
             }
             #content 
             {
@@ -79,6 +79,7 @@
         border-top: 1px solid #fff;
         border-bottom: 1px solid #ccc;
         display: block;
+        cursor: pointer;
         }
     #main_meun li:hover{
         background:#AFAFAF;
@@ -93,6 +94,7 @@
     }
                 #page_left
             {
+                background: url(../images/bg.png);
                 float: left;
             }
             .post_content{
@@ -128,6 +130,7 @@
         color: #1c1c1c;
         padding: 0;
         border: 0;
+        cursor: pointer;
     }
     .button:hover{
         background: #690505;

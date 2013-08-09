@@ -9,7 +9,10 @@ $(document).ready(function(){
 	})
 	$("li#mian_meun_a").click(function(){
 		$('#frame_content').attr('src','include/all.php')
-		$('#frame_content').attr('height','950px')
+		$('#frame_content').attr('height','1500px')
 		
+	})
+	$("li#mian_meun_m").click(function(){
+		$('#frame_content').attr('src','include/manage.php')
 	})
 })

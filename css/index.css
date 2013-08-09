@@ -1,3 +1,6 @@
+/*******Powered by 韵贵科技***********/
+/*******author iscod******************/
+/*******blog www.iscod.com************/
 html,body{
 	margin: 0;
 	padding: 0;
@@ -5,6 +8,7 @@ html,body{
 body{
 	width: 1100px;
 	margin: 0 auto;
+	font-family: arial,'宋体';
 }
 div,h1,h2,h3,h4,h5,h6,ul,ol,li,p,a,img,form,input {
 	margin: 0;
@@ -15,7 +19,7 @@ a {
     color: #690303;
 }
 body {
-	background: #efefef;
+	background: url(../images/bg.png);
 	border: 2px dashed #CACACA;
 	width: 695px;
 }
@@ -35,20 +39,55 @@ body {
 	background: url(../images/h_bg.png);
 	height: 35px;
 }
+#new_batch {
+	margin: -20px 0 0 360px;
+	font-size: 12px;
+}
+#query_news {
+	margin: 10px;
+	font-size: 13px
+}
+#pag_content {
+	background: #efefef;
+}
 #h_cont h3{
 	font-size: 14px;
 	padding: 10px 0 0 30px;
 }
-#new_delete a {
+#new_delete_a{
+	margin: 0;
+}
+#new_delete_a a {
+	background: url(../images/delete.png) no-repeat;
+}
+.new_delete {
+	margin: -30px 0 0 620px;
+}
+.new_delete a {
 	float: right;
 	margin: -17px 38px 0 0;
 	height: 17px;
-	background: url(../images/delete.png) no-repeat;
+	background: url(../images/delete_a.png) no-repeat;
 	width: 40px;
 	display: block;
 	overflow: hidden;
 	line-height: 10em;
 }
+.button {
+	width: 60px;
+	height: 20px;
+	margin: 0;
+	background: #dcdcdc;
+	color: #1c1c1c;
+	padding: 0;
+	border: 0;
+	cursor: pointer;
+}
+.button:hover {
+	background: #690505;
+	color: #b2b2b2
+}
+/********today.php and all.php***********/
 li {
 	list-style: none;
 }
@@ -56,6 +95,7 @@ li.user_news {
     font-size: 12px;
     padding: 10px 20px;
     border: 1px dotted #A7A7A7;
+    height: 55px;
 }
 li.user_news:hover {
     background: rgb(189, 189, 189);
@@ -85,13 +125,15 @@ li#back_p_i {
 	font-weight: 700;
 	
 }
-#page_set li ul li#print_p {
+#pag_content ul #page_set li ul li#print_p {
 	color: #B6B6B6;
 }
-#page_set li ul li{
+
+#pag_content ul #page_set li ul li{
 	float: left;
 	font-size: 12px;
 	color: #690303;
+	margin: 0;
     padding: 10px;
     height: 35px;
 }
@@ -112,3 +154,80 @@ li.back_p_3 {
 li.back_p_3:hover {
 	background: url(../images/ph_bg.png) -162px 0 no-repeat;
 }
+.sign_bg,.n_sign_bg {
+	margin: -40px 0 0 580px;
+	height: 20px;
+	width: 20px;
+	overflow: hidden;
+}
+.sign_bg {
+	background: url(../images/sign_bg.png);
+}
+.n_sign_bg {
+	background: url(../images/n_sign_bg.png);
+}
+.sign_bg a,.n_sign_bg a {
+	display: block;
+	height: 20px;
+	width: 20px;
+	line-height: 10em;
+}
+#pag_content ul li ul li {
+	float: left;
+	margin: 10px 15px 0 0;
+	line-height: 150%;
+}
+#user_news_o {
+	height: 31px;
+	font-weight: 600;
+}
+#user_news_a input {
+	margin: 2px 0 0 0;
+}
+#user_news_b {
+	padding: 0;
+}
+#user_news_c {
+	padding: 0 0 0 88px
+}
+#user_news_d {
+	padding: 0 0 0 45px;
+}
+#user_news_e {
+	padding: 0 0 0 80px;
+}
+#user_news_f {
+	padding: 0 0 0 100px
+}
+
+/*****manage.php ******/
+.page_c {
+	padding: 20px;
+}
+.page_c form {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #E4E4E4;
+}
+.page_c p {
+	font-weight: 600;
+	font-size: 12px;
+	color: #884242;
+	margin: 10px 0;
+
+}
+input#new_password_a{
+	margin: 0 0 0 13px;
+}
+#add_staff {
+	float: left;
+	width: 45%;
+}
+/***********/
+/*****user_news.php*******/
+#sign_number {
+	margin: -16px 0 0 460px;
+	font-size: 12px;
+	font-weight: 600;
+}
+/*************************/

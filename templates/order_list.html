@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php //echo $system_url?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<!-- Template stylesheet -->
+<link href="templates/css/screen.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/datepicker.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/fancybox/jquery.fancybox-1.3.0.css" rel="stylesheet" type="text/css" media="all">
+<!--[if IE]>
+	<link href="templates/css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="templates/js/excanvas.js"></script>
+<![endif]-->
+<!-- Jquery and plugins -->
+<script type="text/javascript" src="templates/js/jquery.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.js"></script>
+<script type="text/javascript" src="templates/js/jquery.img.preload.js"></script>
+<script type="text/javascript" src="templates/js/hint.js"></script>
+<script type="text/javascript" src="templates/js/visualize/jquery.visualize.js"></script>
+<script type="text/javascript" src="templates/js/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.3.0.js"></script>
+<script type="text/javascript" src="templates/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="templates/js/custom_blue.js"></script>
+<script type="text/javascript" src="templates/js/dialog.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){    
+	$("input[name='cbxall']").click(function(){ 
+		if ($(this).attr("checked") == true){ // 全选 
+			$("input[name='cbx']").each(function(){ 
+				$(this).attr("checked", true); 
+			}); 
+		}else{ // 取消全选 
+			$("input[name='cbx']").each(function(){ 
+				$(this).attr("checked", false); 
+			}); 
+		} 
+	}); 
+	
+	$('#subAll').click(function(){
+		if (confirm('你确信要发送所有未发送确认邮件吗!')) {
+			$('#subAll').attr('disabled',"true");
+			dialog("","text:<span id='tips'>邮件发送中，请不要做任何操作！！</span>","400px","auto","text");
+			$.post("order.php", { Action: "post",act:"all_email"},
+			function (data){
+				$('#subAll').removeAttr("disabled");
+				$('#tips').html(data);
+				$('#tips').css("background","url('templates/images/success.jpg') no-repeat");
+				//setTimeout(function(){$('#floatBoxBg').hide();$('#floatBox').hide();},10000);
+				//window.location.href=window.location.href;
+			});
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+//删除
+function doDelete() {
+	var inputs = document.getElementsByTagName("input");
+	var id = "";
+	var count = 0;
+	for (var i = 0; i < inputs.length; i++) {
+		var chcBox = inputs[i];
+		if (chcBox.name == "cbx" && chcBox.checked == true) {
+			id += chcBox.value + "-";
+			count++;
+		}
+	}
+	if (count == 0) {
+		alert("请选中删除行，在删除!");
+		return;
+	} else {
+		if (confirm('你确信要删除选中数据行吗')) {
+			window.self.location = "order.php?act=del&view=<?php echo $type ?>&id=" + id;
+		}
+	}
+}
+function doDelete2(id){
+	if (confirm('你确信要删除吗')) {
+		window.self.location = "order.php?act=del&view=<?php echo $type ?>&id=" + id;
+    }
+}
+</script>
+<style type="text/css">
+	#tips{
+		padding:0;
+		margin:0;
+		padding-left:32px;
+		color:red;
+		line-height:32px;
+		height:32px;
+		display:block;
+		font-size:15px;
+		background:url("templates/images/022.gif") no-repeat;
+	}
+	#floatBoxBg{width:100%;height:100%;background:#000;filter:alpha(opacity=50);opacity:0.5;position:absolute;top:0;left:0;}
+	.floatBox{border:#666 5px solid;width:500px;position:absolute;top:0;left:40%;}
+	.floatBox .title{height:23px;padding:7px 10px 0;background:#333;color:#fff;}
+	.floatBox .title h4{float:left;padding:0;margin:0;font-size:14px;line-height:16px;}
+	.floatBox .title span{float:right;cursor:pointer;}
+	.floatBox .content{padding:20px 15px;background:#fff;}
+	#closeButton{display:none}
+</style>
+</head>
+
+<body style="margin:0px; padding:0px; width:99%;">
+<div class="onecolumn">
+	<div class="header"> <span><?php echo $page_title ?></span> <div class="total" style="margin-left:10px;float:left;margin-top:-2px"><span>总量：<font color="orange" size="4"><?php echo $total?></font>&nbsp;&nbsp;点击：<font color="green" size="4"><?php echo $payclickcount?></font>&nbsp;&nbsp;已付款总量：<font color="green" size="4"><?php echo $success?></font>成功金额：<font color="green" size="4"><?php echo $summoney?>USD</font>&nbsp;&nbsp; CR:<?php echo $ordersCR ?>% &nbsp;&nbsp;  CPR:<?php echo $ordersCPR ?>%&nbsp;&nbsp;  PR:<?php echo $ordersPR ?>% </span></div></div>
+	<br class="clear"/>
+	<div class="search" style="margin-left:10px;margin-top:10px">
+	<form action="order.php">
+	<span>订单号:<input type="text" name="order_sn" value="<?php echo $order_sn?>" /></span>&nbsp;&nbsp;<span>网站:<input type="text" name="url" size="30" value="<?php echo $url?>"/></span> &nbsp;&nbsp;<span>状态:<select name="state" id="state"><option value="无" >无</option><option value="已付款" >已付款</option><option value="未付款">未付款</option><option value="付款失败">付款失败</option></select></span><input type="submit" value="查询" style="margin-left:10px;"/><span style="margin-left:10px;">查询总量：<?php echo $selectCount?></span> <input type="hidden" name="act" value="list"/>
+	<input type="hidden" name="view" value="<?php echo $type ?>"/>
+	</form>
+	</div>
+	
+	<br class="clear"/>
+	<div class="content">
+			<table class="data" width="100%" cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th><input class="check-all" type="checkbox" name="cbxall" /></th>
+						<th>订单号</th>
+						<th>网站</th>
+						
+						<th>系统</th>
+						
+
+						<th>支付金额</th>
+						
+						<th>状态</th>
+						
+						<th>发货状态</th>
+
+						<th>Email</th>
+						<th>Click</th>
+						
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($page->data as $order){  ?>
+					<tr>
+						<td><input type="checkbox" value="<?php echo $order['ys_order_id'] ?>" name="cbx" /></td>
+						<td><a href="order.php?act=details&id=<?php echo $order['ys_order_id'] ?>"><?php echo $order['order_sn'] ?></a>(<font color='#FF0000'><?php echo $order['click_count'] ?></font>)
+						<br /><?php echo $order['order_time'] ?>
+</td>
+						<td><a href="http://<?php echo $order['site_url'] ?>" title="<?php echo $order['site_url'] ?>" target="_blank"><?php echo $order['site_url'] ?></a>
+						<br /><?php echo $order['client_ip'] ?>
+						<br /><?php echo convertip($order['client_ip']) ?>
+</td>
+						
+						<td><?php echo $order['client_os'] ?><br /><?php echo $order['client_browser'] ?></td>
+
+						<td><?php echo $order['order_amount'] ?></td>
+					
+						<td>
+						<?php
+							switch($order['pay_status'])
+							{
+								case 0:
+									echo "未付";
+									break;
+								case 1:
+									echo "<font color='#006600'>成功</font>";
+									break;
+								case 2:
+									echo "<font color='#FF0000'>失败</font>";
+									break;
+								case 3:
+									echo "<font color='#23FFA1'>待确</font>";
+									break;
+							}
+						?>
+						</td>
+						
+						<td>
+						<?php
+							switch($order['shipments_status'])
+							{
+								case 0:
+									echo "无";
+									break;
+								case 1:
+									echo "<font color='#006600'>拒付</font>";
+									break;
+								case 2:
+									echo "<font color='#FF0000'>退款</font>";
+									break;
+								case 3:
+									echo "<font color='#23FFA1'>已发货</font>";
+									break;
+							}
+						?>
+						</td>
+
+						<td><?php if($order['confirm_email'] == '0')
+								{ 
+									echo "<font color='#FF0000'>未发</font>";
+								}elseif($order['confirm_email'] == '2'){
+									echo "<font color='#FF0000'>失败</font>";
+								}else{
+									echo "<font color='#006600'>成功</font>";
+								}?>
+						</td>
+						<td><?php if($order['invoicesclick'] == '0')
+								{ 
+									echo '未点';
+								}elseif($order['invoicesclick'] == '1'){
+									echo "<font color='#006600'>点击</font>";
+								}
+									
+								?>
+						</td>
+						<td><a href="javascript:doDelete2('<?php echo $order['ys_order_id'] ?>')" title="Delete"><img src="templates/images/icon_delete.png" alt="Delete" /></a></td>
+					</tr>
+					<?php } ?>
+				</tbody>
+				<tfoot>
+					<tr><td colspan="12"><a href="javascript:doDelete();" class="button b4"><img src="templates/images/icon_delete.png" alt="Delete" />批量删除</a></td></tr>
+				</tfoot>
+			</table>
+			<div id="chart_wrapper" class="chart_wrapper"></div>
+			<!-- End bar chart table-->
+		<!-- Begin pagination -->
+		<div class="pagination">
+			<a href="<?php echo 'order.php?act=list&view='.$type.'&page_index='.$page->get_top_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&url='.$url.'&state='.$state ?>">首页</a> 
+			<a href="<?php echo 'order.php?act=list&view='.$type.'&page_index='.$page->get_previous_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&url='.$url.'&state='.$state ?>">上一页</a> 
+			<?php foreach ($page->get_numeric() as $row){?>
+				<a href="<?php echo 'order.php?act=list&view='.$type.'&page_index='.$row.'&group_id='.$group_id.'&site_id='.$site_id.'&url='.$url.'&state='.$state ?>" <?php if($row == $page->page_index){?> class="active"<?php }?>><?php echo $row ?></a> 
+			<?php }?>
+			<a href="<?php echo 'order.php?act=list&view='.$type.'&page_index='.$page->get_next_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&url='.$url.'&state='.$state ?>">下一页</a> 
+			<a href="<?php echo 'order.php?act=list&view='.$type.'&page_index='.$page->get_bottom_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&url='.$url.'&state='.$state ?>">末页</a> 
+		</div>
+		<!-- End pagination --> 
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){    
+	$("#state").attr("value","<?php echo $state?>");
+});
+</script>
+</body>
+</html>

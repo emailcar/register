@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php echo $system_url?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<!-- Template stylesheet -->
+<link href="templates/css/screen.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/datepicker.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/fancybox/jquery.fancybox-1.3.0.css" rel="stylesheet" type="text/css" media="all">
+<!--[if IE]>
+	<link href="templates/css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="templates/js/excanvas.js"></script>
+<![endif]-->
+<!-- Jquery and plugins -->
+<script type="text/javascript" src="templates/js/jquery.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.js"></script>
+<script type="text/javascript" src="templates/js/jquery.img.preload.js"></script>
+<script type="text/javascript" src="templates/js/hint.js"></script>
+<script type="text/javascript" src="templates/js/visualize/jquery.visualize.js"></script>
+<script type="text/javascript" src="templates/js/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.3.0.js"></script>
+<script type="text/javascript" src="templates/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="templates/js/custom_blue.js"></script>
+<script type="text/javascript" src="templates/js/dialog.js"></script>
+
+<style type="text/css">
+#floatBoxBg{width:100%;height:100%;background:#000;filter:alpha(opacity=50);opacity:0.5;position:absolute;top:0;left:0;}
+.floatBox{border:#666 5px solid;width:500px;position:absolute;top:0;left:40%;}
+.floatBox .title{height:23px;padding:7px 10px 0;background:#333;color:#fff;}
+.floatBox .title h4{float:left;padding:0;margin:0;font-size:14px;line-height:16px;}
+.floatBox .title span{float:right;cursor:pointer;}
+.floatBox .content{padding:20px 15px;background:#fff;}
+</style>
+</head>
+
+<body style="margin:0px; padding:0px; width:99%;">
+<div class="onecolumn">
+	<div class="header"><span>SN:<?php echo $order_details['ys_order_id'] ?></span> </div>
+	<br class="clear"/>
+	<div class="content">
+		<h3>订单详情</h3><hr />
+		<table width="100%">
+		<tr height="25">
+			<th scope="row" align="right" width="250">订单号：</th>
+			<td><strong><?php echo $order_details['order_sn'] ?></strong></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">网站：</th>
+			<td><a href="http://<?php echo $order_details['site_url'] ?>"  target="_blank" title="<?php echo $order_details['site_url'] ?>"><?php echo $order_details['site_url'] ?></a></td>
+		
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">订单总额：</th>
+			<td><?php echo $order_details['order_amount'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">产品总额：</th>
+			<td><?php echo $order_details['goods_amount'] ?></td>
+		</tr>
+		<?php  if($order_details['bonus_sn']){?>
+		<tr height="25">
+			<th scope="row" align="right">优惠券金额：</th>
+			<td><?php echo $order_details['bonus'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">优惠码：</th>
+			<td><?php echo $order_details['bonus_sn'] ?></td>
+		</tr>
+		<?php }?>
+		<tr height="25">
+			<th scope="row" align="right">运送方式：</th>
+			<td><?php echo $order_details['shipping_name'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">运费：</th>
+			<td><?php echo $order_details['shipping_fee'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">支付通道：</th>
+			<td><?php echo $order_details['pay_name'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">支付手续费：</th>
+			<td><?php echo $order_details['pay_fee'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">付款状态：</th>
+			<td>
+			<?php
+				switch($order_details['pay_status'])
+				{
+					case 0:
+						echo "<font color='#FF0000'>未付款</font>";
+						break;
+					case 1:
+						echo "<font color='#006600'>已付款</font>";
+						break;
+					case 2:
+						echo "<font color='#FF0000'>付款失败</font>";
+						break;
+					case 3:
+						echo "待确认";
+						break;
+				}
+			?>
+			</td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">发货状态：</th>
+			<td>
+			<?php
+				switch($order_details['shipments_status'])
+				{
+					case 0:
+						echo "<font color='#FF0000'>无</font>";
+						break;
+					case 1:
+						echo "<font color='#FF0000'>拒付</font>";
+						break;
+					case 2:
+						echo "<font color='#FF0000'>退款</font>";
+						break;
+					case 3:
+						echo "<font color='#006600'>已发货</font>";
+						break;
+				}
+			?>
+			</td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">下单时间(美国东部时间GMT-5)：</th>
+			<td><?php echo $order_details['order_time'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">客户IP：</th>
+			<td><?php echo $order_details['client_ip'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">系统：</th>
+			<td><?php echo $order_details['client_os'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">浏览器：</th>
+			<td><?php echo $order_details['client_browser'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">是否返回支付结果：</th>
+			<td><?php echo $order_details['is_returned'] ? "<font color='#006600'>已返回</font>":"<font color='#FF0000'>未返回</font>" ?> &nbsp; &nbsp; 
+				<form action="order.php" method="post" style="display:inline;">
+					<input type="hidden" name="id" value="<?php echo $order_details['ys_order_id'] ?>" />
+					<input type="hidden" name="is_returned" value="1" />
+					<input type="hidden" name="act" value="returned" />
+					<input type="submit" value="设为已返回" />
+				</form>
+			</td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">重新返回支付结果：</th>
+			<td><form action="<?php echo $order_details['return_url'] ?>" method="post" target="_blank">
+				<input type="hidden" name="codekey" value="<?php echo $order_details['codekey'] ?>" />
+				<input type="hidden" name="order_sn" value="<?php echo $order_details['order_sn'] ?>" />
+				<input type="hidden" name="succeed" value="<?php echo $order_details['pay_status'] == '2' ? 0 : $order_details['pay_status']?>" />
+				<input type="hidden" name="message" value="YiShang Orders System" />
+				<input type="submit" value="重新返回" />
+			</form>
+			</td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">返回网址：</th>
+			<td><?php echo $order_details['return_url'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">备注：</th>
+			<td><?php echo $order_details['remark'] ?></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right"> 屏蔽信息：</th>
+			<td><font color='#FF0000'><?php echo $order_details['shielded_info'] ?></font></td>
+		</tr>
+		<tr height="25">
+			<th scope="row" align="right">来源(eg:google,yahoo)：</th>
+			<td>
+			<form action="order.php" method="post" style="display:inline;">
+					<input type="hidden" name="id" value="<?php echo $order_details['ys_order_id'] ?>" />
+					<input name="from" value="<?php echo $order_details['order_from'] ?>"/>
+					<input type="hidden" name="act" value="laiyuan" />
+					<input type="submit" value="确定" />&nbsp;&nbsp;<span style="color:green"><?php echo isset($_REQUEST['tips']) ? $_REQUEST['tips']: '';?></span>
+				</form>
+			</td>
+		</tr>
+	</table>
+	<h3>更改付款状态</h3><hr />
+	<form action="" method="post">
+	<table width="100%">
+		<tr height="25">
+			<th scope="row" align="right" width="250">付款状态：</th>
+			<td width="150"><select name="pay_status">
+				<option value="0">未付款</option>
+				<option value="1">已付款</option>
+				<option value="2">付款失败</option>
+				<option value="3">待确认</option>
+				</select>
+			</td>
+			<td><input type="submit" value="确认" /></td>
+		</tr>
+		<input type="hidden" name="id" value="<?php echo $order_details['ys_order_id'] ?>" />
+		<input type="hidden" name="act" value="pay_status" />
+	</table>
+	</form>
+	<form action="" method="post">
+	<table width="100%">
+		<tr height="25">
+			<th scope="row" align="right" width="250">发货状态：</th>
+			<td width="150"><select name="shipments_status">
+				<option value="0">无</option>
+				<option value="1">拒付</option>
+				<option value="2">退款</option>
+				<option value="3">已发货</option>
+				</select>
+			</td>
+			<td><input type="submit" value="确认" /></td>
+		</tr>
+		<input type="hidden" name="id" value="<?php echo $order_details['ys_order_id'] ?>" />
+		<input type="hidden" name="act" value="shipments_status" />
+	</table>
+	</form>
+	<h3>收货人信息</h3><hr />
+	<table width="100%">
+		<tr height="25">
+			<td><?php echo $order_details['email'] ?></td>
+		</tr>
+		<tr height="25">
+			<td><?php echo $order_details['first_name'].' '.$order_details['last_name']  ?></td>
+		</tr>
+		
+		<tr height="25">
+			<td><?php echo $order_details['address'].','.$order_details['city'].','.$order_details['state'].','.$order_details['country'].' '.$order_details['zipcode'] ?></td>
+		</tr>
+		<tr height="25">
+			<td><?php echo $order_details['tel'] ?></td>
+		</tr>
+		
+	</table>
+	<h3>产品信息</h3><hr />
+	<table width="100%">
+		<tr height="25">
+			<th>序号</th>
+			<th>商品名</th>
+			<th>货号</th>
+			<th>属性</th>
+			<th>数量</th>
+			<th>价格</th>
+		</tr>
+		<?php foreach($order_products as $key => $products) {?>
+		<tr height="25">
+			<td><?php echo $key+1?>.</td>
+			<td><a href="http://<?php echo $order_details['site_url'] ?>/goods.php?id=<?php echo $products['goods_id'] ?>" target="_blank"><?php echo $products['goods_name']?></a></td>
+			<td><?php echo $products['goods_sn']?></td>
+			<td><?php echo $products['goods_attr']?></td>
+			<td><?php echo $products['goods_number']?></td>
+			<td><?php echo $products['goods_price']?></td>
+		</tr>
+		<?php }?>
+	</table>
+	<h3>发送邮件</h3>
+	<hr />
+	<table width="100%">
+		<tr height="25">
+			<th>序号</th>
+			<th>编号</th>
+			<th>标题</th>
+			<th>发件人</th>
+			<th>收件人</th>
+			<th>类型</th>
+			<th>状态</th>
+			<th>邮件查看</th>
+			<th>时间</th>
+		</tr>
+		<?php foreach($email_list as $key => $email) {?>
+		<tr height="25" onclick="getConent(<?php echo $email['id']?>)">
+			<td><?php echo $key+1?>.</td>
+			<td><?php echo $email['id']?></td>
+			<td><?php echo $email['email_title']?></td>
+			<td><?php echo $email['send_email']?></td>
+			<td><?php echo $email['to_mail']?></td>
+			<td><?php $type = find_email_type($email['t_id']);echo $type[0]['type_name'];?></td>
+			<td><?php if($email['state'] == '0') echo '<font color="red">发送失败</font>'; else echo '<font color="green">发送成功</font>';?></td>
+			<td><?php if($email['open'] == '0') echo '<font color="red">否</font>'; else echo '<font color="green">是</font>';?></td>
+			<td><?php echo $email['time']?></td>
+		</tr>
+		<?php }?>
+		<tr>
+		<td colspan="7">
+		<div>
+		邮件类型：
+		<select name="email_type" id="email_type">
+			<?php foreach($email_type_list as $type){  ?>
+			<option value="<?php echo $type['type_id'] ?>"><?php echo $type['type_name'] ?></option>
+			<?php } ?>
+		</select>&nbsp;&nbsp;&nbsp;
+		邮件模版：
+		<select name="email_temp" id="email_temp">
+			<?php foreach($email_template_list as $type){  ?>
+			<option value="<?php echo $type['t_id'] ?>"><?php echo $type['template_name'] ?></option>
+			<?php } ?>
+		
+		</select>&nbsp;&nbsp;&nbsp;
+		邮件服务器：
+		<select name="email_config" id="email_config">
+			<?php foreach($email_config_list as $type){  ?>
+			<option value="<?php echo $type['config_id'] ?>"><?php echo $type['username'] ?></option>
+			<?php } ?>
+	
+		</select>&nbsp;&nbsp;&nbsp;
+		<input type="button" onclick="sendMail()" value="发送" />&nbsp;&nbsp;&nbsp;<input type="button" onclick="viewMail()" value="预览" />
+		</div>
+		</td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		function changeSel()
+		{
+			$.post("order.php", { Action: "post",act:"view_temp", type_id: $("#email_type").val() },
+			function (data){
+				$("#email_temp").empty();
+				if(data != "empty")
+				{
+					var dataStr=eval('(' + data + ')');
+					for(var i=0;i< dataStr.length;i++)
+					{
+						$("<option value='"+ dataStr[i]["id"] +"'>"+ dataStr[i]["name"] +"</option>").appendTo("#email_temp");			
+					}
+				}else if(data == "error")
+				{
+					dialog("消息提示","text:出错了","300px","auto","text");
+				}else
+				{
+					$("<option value='0'>没有模版</option>").appendTo("#email_temp");
+				}
+			});
+		}
+		$(document).ready(function(){ 
+			changeSel();
+			$("#email_type").change(function()  
+			{  
+				changeSel();
+			});  
+		});  
+	
+		function getConent(id)
+		{
+			$.post("order.php", { Action: "post",act:"email_content", id: id },
+			function (data){
+				dialog("邮件内容","text:"+data+"","800px","auto","text")
+			});
+		}
+		function sendMail()
+		{
+			if($("#email_temp").val() != "0")
+			{
+	
+				var addr="<?php echo str_replace(array("\n", "\r"), array(' ', ' '),  $order_details['address']).','.str_replace(array("\n", "\r"), array(' ', ' '), $order_details['city']).','.str_replace(array("\n", "\r"), array(' ', ' '), $order_details['state']).','.str_replace(array("\n", "\r"), array(' ', ' '), $order_details['country']) ?>";
+				$.post("order.php", {Action: "post",act:"send_mail_again",ys_order_id: "<?php echo $order_details['ys_order_id'] ?>",order_sn:"<?php echo $order_details['order_sn'] ?>",order_time:"<?php echo $order_details['order_time'] ?>",from_site:"<?php echo $order_details['site_url'] ?>",email_type: $('#email_type').val(),email_temp:$("#email_temp").val(),email_config:$("#email_config").val(),email_account:"<?php echo $order_details['email'] ?>",first_name:"<?php echo $order_details['first_name']?>",last_name:"<?php echo $order_details['last_name']?>",address:addr,zipcode:"<?php echo $order_details['zipcode']?>",tel:"<?php echo $order_details['tel'] ?>" },
+				function (data){
+					dialog("收件邮箱:<?php echo $order_details['email'] ?>","text:"+data+"","500px","auto","text");
+				});
+			}else
+			{
+				dialog("消息提示","text:没有模版！请先添加模版","300px","auto","text");
+			}
+		}
+		function viewMail()
+		{
+			if($("#email_temp").val() != "0")
+			{
+				var addr="<?php echo str_replace(array("\n", "\r"), array(' ', ' '),  $order_details['address']).','.str_replace(array("\n", "\r"), array(' ', ' '), $order_details['city']).','.str_replace(array("\n", "\r"), array(' ', ' '), $order_details['state']).','.str_replace(array("\n", "\r"), array(' ', ' '), $order_details['country']) ?>";
+				$.post("order.php", {Action: "post",act:"view_mail",ys_order_id: "<?php echo $order_details['ys_order_id'] ?>",order_sn:"<?php echo $order_details['order_sn'] ?>",order_time:"<?php echo $order_details['order_time'] ?>",from_site:"<?php echo $order_details['site_url'] ?>",email_type: $('#email_type').val(),email_temp:$("#email_temp").val(),email_account:"<?php echo $order_details['email'] ?>",first_name:"<?php echo $order_details['first_name']?>",last_name:"<?php echo $order_details['last_name']?>",address:addr,zipcode:"<?php echo $order_details['zipcode']?>",tel:"<?php echo $order_details['tel'] ?>" },
+				function (data){
+					dialog("收件邮箱:<?php echo $order_details['email'] ?>","text:"+data+"","800px","auto","text");
+				});
+			}else
+			{
+				dialog("消息提示","text:没有模版！请先添加模版","300px","auto","text");
+			}
+		}
+	</script>
+</div>
+</body>
+</html>

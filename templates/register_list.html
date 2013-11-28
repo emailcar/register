@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php echo $system_url?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<!-- Template stylesheet -->
+<link href="templates/css/screen.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/datepicker.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/fancybox/jquery.fancybox-1.3.0.css" rel="stylesheet" type="text/css" media="all">
+<!--[if IE]>
+	<link href="templates/css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="templates/js/excanvas.js"></script>
+<![endif]-->
+<!-- Jquery and plugins -->
+<script type="text/javascript" src="templates/js/jquery.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.js"></script>
+<script type="text/javascript" src="templates/js/jquery.img.preload.js"></script>
+<script type="text/javascript" src="templates/js/hint.js"></script>
+<script type="text/javascript" src="templates/js/visualize/jquery.visualize.js"></script>
+<script type="text/javascript" src="templates/js/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.3.0.js"></script>
+<script type="text/javascript" src="templates/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="templates/js/custom_blue.js"></script>
+<script type="text/javascript" src="templates/js/dialog.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){    
+	$("input[name='cbxall']").click(function(){ 
+		if ($(this).attr("checked") == true){ // 全选 
+			$("input[name='cbx']").each(function(){ 
+				$(this).attr("checked", true); 
+			}); 
+		}else{ // 取消全选 
+			$("input[name='cbx']").each(function(){ 
+				$(this).attr("checked", false); 
+			}); 
+		} 
+	}); 
+	
+	$('#subAll').click(function(){
+		if (confirm('你确信要发送所有未发送确认邮件吗!')) {
+			$('#subAll').attr('disabled',"true");
+			dialog("","text:<span id='tips'>邮件发送中，请不要做任何操作！！</span>","400px","auto","text");
+			$.post("order.php", { Action: "post",act:"all_email"},
+			function (data){
+				$('#subAll').removeAttr("disabled");
+				$('#tips').html(data);
+				$('#tips').css("background","url('templates/images/success.jpg') no-repeat");
+				//setTimeout(function(){$('#floatBoxBg').hide();$('#floatBox').hide();},10000);
+				//window.location.href=window.location.href;
+			});
+		}
+	});
+});
+</script>
+<script type="text/javascript">
+//删除
+function doDelete() {
+	var inputs = document.getElementsByTagName("input");
+	var id = "";
+	var count = 0;
+	for (var i = 0; i < inputs.length; i++) {
+		var chcBox = inputs[i];
+		if (chcBox.name == "cbx" && chcBox.checked == true) {
+			id += chcBox.value + "-";
+			count++;
+		}
+	}
+	if (count == 0) {
+		alert("请选中删除行，在删除!");
+		return;
+	} else {
+		if (confirm('你确信要删除选中数据行吗')) {
+			window.self.location = "order.php?act=del&view=<?php echo $type ?>&id=" + id;
+		}
+	}
+}
+function doDelete2(id){
+	if (confirm('你确信要删除吗')) {
+		window.self.location = "order.php?act=del&view=<?php echo $type ?>&id=" + id;
+    }
+}
+function doDelete3(id){
+	if (confirm('你确定要删除吗')){
+		window.self.location = "order.php?act=del$view=<?php echo $type ?>$id="+id;
+	}
+}
+function news_staff_set(){
+	var inputs = document.getElementsByTagName("input");
+	var id = "";
+	var count = 0;
+	for (var i = 0; i < inputs.length; i++) {
+		var chcBox = inputs[i];
+		if (chcBox.name == "cbx" && chcBox.checked == true) {
+			id += chcBox.value + "-";
+			count++;
+		}
+	}
+	if (count == 0) {
+		alert("请先选中，在提交!");
+		return;
+	} else {
+		if (confirm('确定')) {
+			window.self.location = "order.php?act=staff_set&view=<?php echo $type ?>&id=" + id;
+		}
+	}
+}
+$(document).ready(function(){
+	$('#submit_reg_set').click(function(){
+		news_staff_set()
+	})
+})
+</script>
+<style type="text/css">
+	#tips{
+		padding:0;
+		margin:0;
+		padding-left:32px;
+		color:red;
+		line-height:32px;
+		height:32px;
+		display:block;
+		font-size:15px;
+		background:url("templates/images/022.gif") no-repeat;
+	}
+	#floatBoxBg{width:100%;height:100%;background:#000;filter:alpha(opacity=50);opacity:0.5;position:absolute;top:0;left:0;}
+	.floatBox{border:#666 5px solid;width:500px;position:absolute;top:0;left:40%;}
+	.floatBox .title{height:23px;padding:7px 10px 0;background:#333;color:#fff;}
+	.floatBox .title h4{float:left;padding:0;margin:0;font-size:14px;line-height:16px;}
+	.floatBox .title span{float:right;cursor:pointer;}
+	.floatBox .content{padding:20px 15px;background:#fff;}
+	#closeButton{display:none}
+</style>
+</head>
+
+<body style="margin:0px; padding:0px; width:99%;">
+<div class="onecolumn">
+	<div class="header"> 
+		<span><?php echo $page_title;?></span> 
+		<div class="total" style="margin-left:10px;float:left;margin-top:-2px">
+			<span>总量：<font color="orange" size="4">12837<!-- <?php echo $select_register_number?>  --></font>
+			<!--&nbsp;&nbsp;点击：<font color="green" size="4"><?php echo $payclickcount?></font>&nbsp;&nbsp;已付款总量：<font color="green" size="4"><?php echo $success?></font>成功金额：<font color="green" size="4"><?php echo $summoney?>USD</font>&nbsp;&nbsp; CR:<?php echo $ordersCR ?>% &nbsp;&nbsp;  CPR:<?php echo $ordersCPR ?>%&nbsp;&nbsp;  PR:<?php echo $ordersPR ?>% -->
+			</span>
+		</div>
+	</div>
+	<br class="clear"/>
+	<div class="search" style="margin-left:10px;margin-top:10px">
+		<form action="order.php" method="post">
+			<span>
+				<label>ID：<input type="text" name="order_sn"></label>
+				<label>姓：<input type="text" name="user_last"></label>
+				<label>名：<input type="text" name="user_first"></label>
+				<label>公司名：<input type="text" name="computer_name"></label>
+				<label>状态：
+					<select name="news_staff_query">
+						<option value=""></option>
+						<option value="sign_query">已标记</option>
+						<option value="cancel_query">未标记</option>
+					</select>
+				</label>
+				<label>来源：
+					<select name="news_source_query">
+						<option value=""></option>
+						<option value="user_query">客户</option>
+						<option value="user_me">批量</option>
+					</select>
+				</label>
+				<input type="submit" class="button" value="查询">
+				查询总量：<?php echo $register_list->total_records?>
+				<input type="hidden" name="act" value="register"/>
+				<input type="hidden" name="view" value="<?php echo $type ?>"/>
+				<label>
+					<input type="button" name="export" id="export" value="导出"/>
+				</label>
+				<?php echo'
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$("#export").click(function(){
+							$(this).css("background","#f7f7f7");
+							window.open("export_csv.php?act=register&view='.$type.'&register_all&news_source_query='.$news_source_query.'&news_staff_query='.$news_staff_query.'&move=esport");
+						});
+					});
+				</script>';
+				?>
+			</span>
+			<!--
+			<span>
+				<select name="news_staff_set">
+				<option value=""></option>
+					<option value="sign_set">标记</option>
+					<option value="cancel_set">取消标记</option>
+				</select>
+				批量操作
+				<input id="submit_reg_set" type="button" class="button" value="确认">
+			</span>
+		-->
+		</form>
+<!--
+	<form action="order.php">
+	<span>订单号:<input type="text" name="order_sn" value="<?php echo $order_sn?>" /></span>&nbsp;&nbsp;<span>网站:<input type="text" name="url" size="30" value="<?php echo $url?>"/></span> &nbsp;&nbsp;<span>状态:<select name="state" id="state"><option value="无" >无</option><option value="已付款" >已付款</option><option value="未付款">未付款</option><option value="付款失败">付款失败</option></select></span><input type="submit" value="查询" style="margin-left:10px;"/><span style="margin-left:10px;">查询总量：<?php //echo $select_register?></span> <input type="hidden" name="act" value="list"/>
+	<input type="hidden" name="view" value="<?php echo $type ?>"/>
+	</form>
+-->
+	</div>
+	
+	<br class="clear"/>
+	<div class="content">
+			<table class="data" width="100%" cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th><input class="check-all" type="checkbox" name="cbxall" /></th>
+						<th style="width: 15%;">ID号</th>
+						<th style="width: 14%;">称谓</th>
+						<th style="width: 30%;">联系方式</th>
+						<th>公司信息</th>
+						<th>标记状态</th>
+						<th>操作</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					
+					<?php foreach($register_list->data as $user_news){?>
+						<tr>
+							<td>
+								<input type="checkbox" value="<?php echo $user_news['id']; ?>" name="cbx" />
+							</td>
+							<td>
+								<a href="order.php?act=register_news&id=<?php echo $user_news['id'] ?>"><?php echo $user_news['id']; ?></a>(<font color='#FF0000'><?php echo $user_news['id'] ?></font>)
+						<br /><?php echo $user_news['date']; ?>
+							</td>
+							<td>称呼：
+								<?php echo $user_news['user_last_name'].$user_news['user_first_name'];
+								/*switch ($user_news['user_tltle']) {
+									case 0:
+									echo "先生";
+									break;
+									case 1:
+									echo "小姐";
+									break;
+									case 2;
+									echo "女士";
+								}*/
+								?>
+								<br/>
+								职位：
+								<?php echo $user_news['user_job'];?>
+							</td>
+							<td>
+								手机：<?php 
+										echo $user_news['user_mobile']; 
+									?>
+								<br/>
+								邮箱：<?php echo $user_news['user_email'];?>
+							</td>
+							<td>
+								公司：<?php echo $user_news['user_company']; ?>
+								<br/>
+								电话：<?php 
+									if($user_news['user_tel_area']){
+										echo $user_news['user_tel_area'].'-';
+									}
+									echo $user_news['user_tel'];?>
+							</td>
+							<td>
+								<?php switch($user_news['user_sign']){
+									case 0:
+										echo "未标记";
+										break;
+									default:
+										echo "已标记";
+										break;
+								} ?>
+								<?php switch($user_news['user_source']){
+									case 0:
+										echo "﹣";
+										break;
+									case 1:
+										echo "+";
+										break; 
+								}?>
+							</td>
+							
+						<td>
+							<a href="manage.php?act=manage_user_edit&id=<?php echo $user_news['id']?>"><img src="templates/images/icon_edit.png" alt="Edit" /></a>
+						</td>
+							<td><a href="javascript:doDelete2('<?php echo $user_news['id']; ?>')" title="Delete"><img src="templates/images/icon_delete.png" alt="Delete" /></a></td>
+						</tr>
+					<?php }
+					?>
+				
+
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="12"><a href="javascript:doDelete();" class="button b4"><img src="templates/images/icon_delete.png" alt="Delete" />批量删除</a></td>
+					</tr>
+				</tfoot>
+			</table>
+			<div id="chart_wrapper" class="chart_wrapper"></div>
+			<!-- End bar chart table-->
+		<!-- Begin pagination -->
+		<div class="pagination">
+			<a href="<?php echo 'order.php?act=register&view='.$type.'&page_index='.$register_list->get_top_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&news_staff_query='.$news_staff_query.'&computer_name='.$computer_name.'&user_last='.$user_last.'&user_first='.$user_first.'&news_source_query='.$news_source_query ?>">首页</a> 
+			<a href="<?php echo 'order.php?act=register&view='.$type.'&page_index='.$register_list->get_previous_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&news_staff_query='.$news_staff_query.'&computer_name='.$computer_name.'&user_last='.$user_last.'&user_first='.$user_first.'&news_source_query='.$news_source_query ?>">上一页</a> 
+			<?php foreach ($register_list->get_numeric() as $row){?>
+				<a href="<?php echo 'order.php?act=register&view='.$type.'&page_index='.$row.'&group_id='.$group_id.'&site_id='.$site_id.'&news_staff_query='.$news_staff_query.'&computer_name='.$computer_name.'&user_last='.$user_last.'&user_first='.$user_first.'&news_source_query='.$news_source_query ?>" <?php if($row == $register_list->page_index){?> class="active"<?php }?>><?php echo $row ?></a> 
+			<?php }?>
+			<a href="<?php echo 'order.php?act=register&view='.$type.'&page_index='.$register_list->get_next_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&news_staff_query='.$news_staff_query.'&computer_name='.$computer_name.'&user_last='.$user_last.'&user_first='.$user_first.'&news_source_query='.$news_source_query ?>">下一页</a> 
+			<a href="<?php echo 'order.php?act=register&view='.$type.'&page_index='.$register_list->get_bottom_page_index().'&group_id='.$group_id.'&site_id='.$site_id.'&news_staff_query='.$news_staff_query.'&computer_name='.$computer_name.'&user_last='.$user_last.'&user_first='.$user_first.'&news_source_query='.$news_source_query ?>">末页</a> 
+		</div>
+		<!-- End pagination --> 
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){    
+	$("#state").attr("value","<?php echo $state?>");
+});
+</script>
+</body>
+</html>

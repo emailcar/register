@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html"/>
+	<meta charset="utf-8"/>
+<style>
+html,body{
+	margin: 0;
+	padding: 0;
+	font-family: SimHei,'宋体';
+}
+h1,h2,h3,h4,h5,h6,p,div,img,tr,td,th,ul,li,ol,button{
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+ul,li,ol{
+	list-style-type: none;
+}
+a {
+text-decoration: none;
+display: block;
+}
+.button{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	height: 30px;
+	width: 50px;
+	border-radius: 2px;
+	text-align: center;
+	color: #fff;
+	background: #3ba354;
+	cursor: pointer;
+}
+.button:hover{
+	background: #46BB62;
+}
+	body{
+		
+	}
+	#page{
+		background: url(templates/images/header_bg.jpg) repeat-x;
+	}
+	#header{
+		height: 363px;
+		width: 960px;
+		margin: 0 auto;
+	}
+	#header h1{
+	padding: 41px 0 0 0px;
+	}
+	#header h1 a{
+		width: 350px;
+		height: 40px;
+		overflow: hidden;
+		color: #fff;
+		font-family: SimHei,'宋体';
+	}
+	#logo{
+		margin: 45px 0 0 20px;
+		float: left;
+		background: url(templates/images/header_logo.png) no-repeat;
+		height: 194px;
+		width: 194px;
+		overflow: hidden;
+		line-height: 100em;
+	}
+	#nav_li{
+		padding: 95px 0 0 470px;
+	}
+	#nav_li li{
+		display: inline-block;
+		float: left;
+		
+	}
+	#nav_li li a{
+		background: url(templates/images/nav_li_bg.png) no-repeat 100% 100%;
+		height: 106px;
+		width: 106px;
+		overflow: hidden;
+		line-height: 100em;
+	}
+	#nav_li li a:hover{
+		background: url(templates/images/nav_li_bg_h.png) no-repeat 100% 100%;
+	}
+	#page_con{
+		width: 960px;
+		margin: 0 auto;
+		padding: 20px 0;
+	}
+	.colock_div{
+		height: 120px;
+		width: 90px;
+		background: url(templates/images/colock_div_bg.png) no-repeat 100% 100%;
+		display: block;
+		position: absolute;
+	}
+	.span_title{
+		color: #EC5757;
+		margin: 0 5px 0 0;
+	}
+	#page_con input {
+		border: 1px solid #CCC;
+		border-bottom: 1px solid #ddd;
+		border-right: 1px solid #ddd;
+		height: 16px;
+		padding: 3px 6px;
+		width: 260px;
+		outline-color: #3ba354;
+		outline-width: thin;
+		text-indent: 10px;
+	}
+	.page_con_input{
+		padding: 10px 0;
+	}
+	.page_con_input_title{
+		text-align: right;
+		float: left;
+		width: 140px;
+		}
+	#footer{
+		padding: 40px 0;
+		height: 40px;
+		background: #3B96F5;
+		color: #fff;
+		text-align: center;
+		line-height: 170%;
+	}
+</style>
+<script type="text/javascript">
+function validate_required(filed,alerttxt){
+	with(filed){
+		if(value==null||value==''){
+			alert(alerttxt);return false
+		}else{
+			return true
+		}
+	}
+}
+function default_form(thisform){
+	with(thisform){
+		if(validate_required(txtLastName,'没有填写姓！')==false){
+			txtLastName.focus();return false;
+		}else{
+			if(validate_required(txtFirstName,'没有填写名！')==false){
+				txtFirstName.focus();return false;
+			}else{
+				if(validate_required(txtConfirmEmail,'没有填写邮箱！')==false){
+					txtConfirmEmail.focus();return false;
+				}
+				/*else{
+					if(validate_required(txtMobile,'没有填写手机号哦！')==false){
+						txtMobile.focus();return false;
+					}
+				}*/
+			}
+		}
+	}
+}
+</script>
+</head>
+<body>
+	<div id="page">
+	<div id="header">
+		<h1><a href="index.html">韵贵数据服务平台</a></h1>
+		<div id="logo">韵贵数据中心</div>
+		<div id="nav_li">
+			<ul>
+				<li><a href="index.html" style="background-position: 0px 0;">网站主页</a></li>
+				<li style="padding: 0 85px;"><a href="index.php" style="background-position: -186px 0;">系统登录</a></li>
+				<li><a href="default.php" style="background-position: -375pxpx 0;">模拟测试</a></li>
+			</ul>
+		</div><!--end nav_li-->
+	</div><!--end header-->
+	<div id="page_con">
+		<span class="span_title">**您正在进行模拟客户登记过程**</span>
+		
+		<form action="default.php" onsubmit="return default_form(this);" method="post" >
+			<div class="page_con_input"><label class="page_con_input_title"><span class="span_title">*</span>姓：</label><input type="text" size="12" name="txtLastName"></div>
+			<div class="page_con_input"><label class="page_con_input_title"><span class="span_title">*</span>名：</label><input type="text" size="12" name="txtFirstName"></div>
+			<div class="page_con_input"><label class="page_con_input_title"><span class="span_title">*</span>邮箱：</label><input type="text" size="12" name="txtConfirmEmail"></div>
+			<div class="page_con_input"><label class="page_con_input_title">电话：</label><input type="text" size="12" name="txtTel"></div>
+			<div class="page_con_input"><label class="page_con_input_title">手机：</label><input type="text" size="12" name="txtMobile"></div>
+			<div class="page_con_input"><label class="page_con_input_title">公司名称：</label><input type="text" size="12" name="radCountry"></div>
+			<div class="page_con_input"><label class="page_con_input_title">地址：</label><input type="text" size="12" name="txtAddress"></div>
+			<div class="page_con_input"><label class="page_con_input_title">QQ：</label><input type="text" size="12" name="txtIM"></div>
+			<input type="hidden" name="txtLanguage" value="ch">
+			<div class="page_con_input"><input type="submit" name="submit" value="提交" style="height: 30px;margin: 0 0 0 140px;width: 140px;padding: 0;border: 0;" class="button"></div>
+		</form>
+	</div><!--end page_con-->
+	<div id="footer">
+		<p>版权所有：韵贵网络科技</p>
+		<p>地址：江苏省昆山市花桥国际商务城绿地大道231号9栋22楼</p>
+	</div>
+</div>
+</body>
+</html>

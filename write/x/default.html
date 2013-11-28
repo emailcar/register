@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我要参观 > 在线预登记_中国灯博会网站-上海博华</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="/templets/moban/css/css.css" rel="stylesheet" type="text/css" />
+<link href="/templets/moban/css/dengji.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+  .right_cont{
+    margin: 20px;
+    padding: 0;
+  }
+  .right_cont div{
+    display: inline-block;
+  }
+  .box {
+    margin-right: 10px;
+    +float: left;
+  }
+  .user_name {
+    font-weight: 600;
+  }
+</style>
+</head>
+
+<body>
+<div class="top">
+<div class="head">
+
+<div class="logotop">
+<div class="search">
+<div id="search_box">
+<form id="search_form" method="post" action="/plus/search.php"> 
+<input type="text" name="q" id="s" value="请输入关键字"  onfocus="javascript:if(this.value=='请输入关键字')this.value='';"  class="swap_value" /> 
+<input type="image" src="/templets/moban/img/search.gif" width="72" height="28" id="go" alt="Search" title="Search" /> 
+</form>
+</div>
+</div>
+<div class="topdengji"><a href="/woyaocanguan/zaixianyudengji/" target="_blank" ><img src="/img/dengji.gif" /></a></div>
+<div class="gaoji"><a href="/">高级搜索</a></div>
+<div class="english"><a href="/">English</a></div>
+</div>
+<div style="clear:both"></div>
+
+<div class="topmain">
+<div class="logo"><img src="/templets/moban/img/logo.jpg" width="210" height="70" /></div>
+<div id="menu">
+  <ul>    
+    <li class='m_li'><a href="/">首　页</a></li>   
+        
+        <li class='m_li'><a href='/zhanhuigailan/'  rel='dropmenu1'>展会概览</a></li>
+        <li class='m_li_a'><a href='/woyaocanguan/'  rel='dropmenu5'>我要参观</a></li>
+        <li class='m_li'><a href='http://www.gzlightingfair.com:8080/plus/list.php?tid=4' >展商名录</a></li>
+        
+        <li class='m_li'><a href='/xinwenzhongxin/' >新闻中心</a></li>
+        
+        <li class='m_li'><a href='/3D_guancha/'  rel='dropmenu11'>3D 观察</a></li>
+        
+        <li class='m_li'><a href='/lianxiwomen/' >联系我们</a></li>
+            
+  </ul>
+</div>
+
+
+
+<div style="clear:both"></div>
+<div class="banner"><img src="/templets/moban/img/banner.jpg" /></div>
+</div>
+</div>
+</div>
+
+
+<div class="othermain">
+<div class="left">
+<div><a href="/woyaocanguan/canguanyindao/"><img src="/img/cgydbg.jpg" width="172" height="48" /></a></div>
+<div><a href="/woyaocanguan/zaixianyudengji/"><img src="/img/zxdj.jpg" width="172" height="48" /></a></div>
+<div class="leftbg"></div>
+</div>
+<div class="right">
+<div class="pictitle"><img src="/templets/moban/img/12jiex.jpg" width="626" height="57" /></div>
+<div class="right_cont">
+    <p><div class="box">尊敬的：</div><div class="user_name"><?php echo $user_news['name'];?></div></p>
+    <p>感谢您进行登记参观第十二届中国·古镇国际灯饰博展会暨LED应用展</p>
+    <p><div class="box">您使用的邮箱为：</div><div class="user_name"><?php echo $user_news['email'];?></div></p>
+    <p><div class="box">您使用的手机号为：</div><div class="user_name"><?php echo $user_news['mobile'];?></div></p>
+    <p>我们的工作人员稍后将与您联系</p>
+    <p>展会日程：</p>
+    <p>
+      <img src="../../templets/moban/img/sjb.gif">
+    </p>
+    <p>地点：</p>
+    <p>
+      <img src="../../templets/moban/img/sjbx.gif">
+    </p>
+<!--
+<form action="../../Register/default.php" onsubmit="return validate_form(this);" enctype="multipart/form-data" method="post">
+  <div class="zxdengji">
+  <ul>
+  <br /><br /><br /><br /><br />
+
+  <li>
+  <div class="bmtitle">姓名</div><div class="user_news"><?php echo $user_news['name'];?></div>
+  </li>
+  <br /><br />
+  <li>
+  <div class="bmtitle">公司</div><div class="user_news">韵贵科技测试</div>
+  </li>
+  <br /><br />
+  <!
+  <li>
+  <div class="bmtitle">国家/地区</div><input type="radio" name="guojia" value = "zgdl" >中国大陆
+  <input type="radio" name="fruit" value = "zgxg">中国香港
+  <input type="radio" name="fruit" value = "zgam">中国澳门
+  <input type="radio" name="fruit" value = "zgtw">中国台湾 
+  <input type="radio" name="fruit" value = "qtgj" checked>其他国家
+  </li>
+
+  <li>
+  <div class="bmtitle">地址</div><input size="74" type="text" maxlength="180" name="dizhi"  class="inputcss"/>
+  </li>
+
+  <li>
+  <div class="bmtitle">邮编</div><input size="16" type="text" maxlength="180" name="youbian"  class="inputcss"/>
+  <div class="zhushi">(国家代码:中国地区代码为86)</div>
+  </li>
+
+  <li>
+  <div class="bmtitle">传真</div><input size="16" type="text" maxlength="180" name="czgjdm" value="国家代码"   onfocus="javascript:if(this.value=='国家代码')this.value='';"  class="inputcss"/><input size="16" type="text" maxlength="180" name="czdhdqh" value="电话地区号"   onfocus="javascript:if(this.value=='电话地区号')this.value='';"  class="inputcss"/><input size="16" type="text" maxlength="180" name="czhm" value="传真号码" onfocus="javascript:if(this.value=='传真号码')this.value='';"  class="inputcss"/>
+  </li>
+
+
+  <li>
+  <div class="bmtitle">确认邮箱</div><input size="46" type="text" maxlength="180" name="qryouxiang"  class="inputcss"/>
+  </li>
+  <li style="padding-left:90px;">
+  <div class="zhushi">(请确认您的邮箱的准确性，我们将会把您的账号信息、注册号<br>以及登录密码发送至您的邮箱，请及时查收)</div>
+  </li>
+  <li>
+  <div class="bmtitle">网址</div><input size="46" type="text" maxlength="180" name="wangzhi"  class="inputcss"/>
+  </li>
+  
+  <li>
+  <div class="bmtitle">电话</div><input size="43" type="text" maxlength="180" name="txtTel"  class="inputcss"/>
+  </li>
+  <br /><br />
+  <li>
+  <div class="bmtitle">手机</div><input size="43" type="text" maxlength="180" name="txtMobile"  class="inputcss"/>
+  </li>
+  <br /><br />
+  <li>
+  <div class="bmtitle">邮箱</div><input size="46" type="text" maxlength="180" name="txtConfirmEmail"  class="inputcss"/>
+  </li>
+  <li style="padding-left:90px;">
+  <div class="zhushi">(该邮箱将作为您的个人账号，请勿使用共用邮箱)</div>
+  </li>
+  <br /><br />
+  <div align="center">
+  <input type="submit" name="submit" class="submit_form" value="Submit">
+  <input type="hidden" name="textcookie" id="wp_user_id" class="button" value='true'>
+  </div>
+</form>
+-->
+</div>
+</div>
+</div>
+</div>
+<div style="clear:both"></div>
+<div class="foot"><br />
+<span>版权所有 中国灯博会&上海博华  沪ICP备05034851号</span><br />
+<span>Copyright &copy; 2000-2013 gzlightingfair.com All Rights Reserved</span><br />
+<span>后台登陆</span>
+</div>
+</body>
+</html>

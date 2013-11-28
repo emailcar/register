@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php echo $system_url?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网站信息列表</title>
+<!-- Template stylesheet -->
+<link href="templates/css/screen.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/datepicker.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/fancybox/jquery.fancybox-1.3.0.css" rel="stylesheet" type="text/css" media="all">
+<!--[if IE]>
+	<link href="templates/css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="templates/js/excanvas.js"></script>
+<![endif]-->
+<!-- Jquery and plugins -->
+<script type="text/javascript" src="templates/js/jquery.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.js"></script>
+<script type="text/javascript" src="templates/js/jquery.img.preload.js"></script>
+<script type="text/javascript" src="templates/js/hint.js"></script>
+<script type="text/javascript" src="templates/js/visualize/jquery.visualize.js"></script>
+<script type="text/javascript" src="templates/js/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.3.0.js"></script>
+<script type="text/javascript" src="templates/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="templates/js/custom_blue.js"></script>
+<script type="text/javascript" src="templates/js/dialog.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){    
+
+	$("input[name='cbxall']").click(function(){ 
+		if ($(this).attr("checked") == true){ // 全选 
+			$("input[name='cbx']").each(function(){ 
+				$(this).attr("checked", true); 
+			}); 
+		}else{ // 取消全选 
+			$("input[name='cbx']").each(function(){ 
+				$(this).attr("checked", false); 
+			}); 
+		} 
+	}); 
+});
+</script>
+<script type="text/javascript">
+//删除
+function doDelete() {
+	var inputs = document.getElementsByTagName("input");
+	var id = "";
+	var count = 0;
+	for (var i = 0; i < inputs.length; i++) {
+		var chcBox = inputs[i];
+		if (chcBox.name == "cbx" && chcBox.checked == true) {
+			id += chcBox.value + "-";
+			count++;
+		}
+	}
+	if (count == 0) {
+		alert("请选中删除行，在删除!");
+		return;
+	} else {
+		if (confirm('你确信要删除选中数据行吗')) {
+			window.self.location = "sites.php?act=del&id=" + id;
+		}
+	}
+}
+function doDelete2(id){
+	if (confirm('你确信要删除吗')) {
+		window.self.location = "sites.php?act=del&id=" + id;
+    }
+}
+</script>
+</head>
+
+<body style="margin:0px; padding:0px; width:99%;">
+<div class="onecolumn">
+	<div class="header"><span>网站管理</span></div>
+	<div class="search" style=" line-height:30px; padding-left:20px;"><span><a href="sites.php?act=auto">批量自动添加网站(及订单归类)</a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<span><a href="sites.php?act=add">添加网站</a></span></div>
+	<br class="clear"/>
+	<div class="content">
+			<table class="data" width="100%" cellpadding="0" cellspacing="0">
+				<thead>
+					<tr>
+						<th><input class="check-all" type="checkbox" name="cbxall" /></th>
+						<th>分组</th>
+						<th>URL</th>
+						<th>订单列表</th>
+						<th>操作员</th>
+						<th>备注</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($page->data as $site){  ?>
+					<tr>
+						<td><input type="checkbox" value="<?php echo $site['site_id'] ?>" name="cbx" /></td>
+						<td><?php echo $site['group_name'] ?></td>
+						<td><?php echo $site['site_url'] ?></td>
+						<td><a href="order.php?act=list&view=all&page_index=1&site_id=<?php echo $site['site_id']?>">查看订单列表</a></td>
+						<td><?php echo $site['site_operator'] ?></td>
+						<td><?php echo $site['remark'] ?></td>
+						<td>
+						<a href="sites.php?act=edit&id=<?php echo $site['site_id'] ?>" title="Edit"><img src="templates/images/icon_edit.png" alt="Edit" /></a>&nbsp;&nbsp;
+						<a href="javascript:doDelete2('<?php echo $site['site_id'] ?>')" title="Delete"><img src="templates/images/icon_delete.png" alt="Delete" /></a>
+						</td>
+					</tr>
+					<?php } ?>
+				</tbody>
+				<tfoot>
+					<tr><td colspan="12"><a href="javascript:doDelete();" class="button b4"><img src="templates/images/icon_delete.png" alt="" />批量删除</a></td></tr>
+				</tfoot>
+			</table>
+			<div id="chart_wrapper" class="chart_wrapper"></div>
+			<!-- End bar chart table-->
+		<!-- Begin pagination -->
+		<div class="pagination">
+			<a href="<?php echo 'sites.php?act=list&group_id='.$group_id.'&page_index='.$page->get_top_page_index() ?>">首页</a> 
+			<a href="<?php echo 'sites.php?act=list&group_id='.$group_id.'&page_index='.$page->get_previous_page_index() ?>">上一页</a> 
+			<?php foreach ($page->get_numeric() as $row){?>
+				<a href="<?php echo 'sites.php?act=list&group_id='.$group_id.'&page_index='.$row ?>" <?php if($row == $page->page_index){?> class="active"<?php }?>><?php echo $row ?></a> 
+			<?php }?>
+			<a href="<?php echo 'sites.php?act=list&group_id='.$group_id.'&page_index='.$page->get_next_page_index() ?>">下一页</a> 
+			<a href="<?php echo 'sites.php?act=list&group_id='.$group_id.'&page_index='.$page->get_bottom_page_index() ?>">末页</a> 
+		</div>
+		<!-- End pagination --> 
+	</div>
+</div>
+</body>
+</html>

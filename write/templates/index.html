@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html">
+        <meta charset="utf-8">
+        <title>评论批量导入系统</title>
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+</script>
+        <script type="text/javascript">
+            $(doument).ready(function(){
+                $(#wp_comment).click(function(){
+                    $(#loginform).action="csv.php?manage=comment";
+                })
+                $(#wp_post).click(function(){
+                    $(#loginform).action="csv.php?manage=shop";
+                })
+            })
+        </script>
+    </head>
+<body>
+	<div id="header">
+		<h1>批量导入记录</h1>
+	</div>
+	<div id="content">
+        <?php /* ?>
+        <form action="upload_file.php" method="post" enctype="multipart/form-data">
+            <label for="file">Filename:</label>
+            <input type="file" name="file" id="file" /> 
+            <br />
+            <input type="submit" name="submit" value="Submit" />
+        </form>
+        <?php */?>
+		<form name="logoinform"  id="loginform" action="write_user.php" method="post" onsubmit="return login_user()" enctype="multipart/form-data">
+						<p>
+							<label for="user_login">
+								上限时间：<br/>
+								年：<input type="text" name="start_year" class="input" value size="10">
+								月：<input type="text" name="start_month" class="input" value size="10">
+								日：<input type="text" name="start_day" class="input" value size="10">
+								小时：<input type="text" name="start_hour" class="input" value size="10">
+								分钟：<input type="text" name="start_minute" class="input" value size="10">
+								秒：<input type="text" name="start_second" class="input" value size="10">
+
+							</label>
+						</p>
+                        <p>
+                        	<label for="user_login">
+								下限时间：<br/>
+								年：<input type="text" name="end_year" class="input" value size="10">
+								月：<input type="text" name="end_month" class="input" value size="10">
+								日：<input type="text" name="end_day" class="input" value size="10">
+								小时：<input type="text" name="end_hour" class="input" value size="10">
+								分钟：<input type="text" name="end_minute" class="input" value size="10">
+								秒：<input type="text" name="end_second" class="input" value size="10">
+							</label>
+
+                        </p>
+                        （注：您应该按照像2013-9-8 08:03:06格式输入）
+						<p>
+							<label for="user_pass">
+								文件选择：<br/>
+								<input type="text" name="file_name" id="user_password" class="input" value=".csv" size="20">（注：文件必须为csv文件）
+							</label>
+						</p>
+						<p>
+							<input type="submit" name="wp_submit" id="wp_comment" class="button" value="导入记录">
+							<input type="hidden" name="textcookie" id="wp_user_id" class="button" value='submit'>
+						</p>
+		</form>
+	</div>
+	<div id="footer">
+	</div>
+</body>

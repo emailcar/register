@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lighting Fair 12</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+<link rel="stylesheet" type="text/css" href="css/style.css"/>
+<script type="text/javascript">
+  function validate_required(field,alerttxt){
+    with(field)
+    {
+      if(value==null||value==''){
+        alert(alerttxt);return false
+      }else{
+        return true
+      }
+    }
+  }
+  function validate_txtCompany(field,alerttxt){
+    with(field)
+    if(value==null||value==''){
+      alert(alerttxt);return false
+    }else{ return true }
+  }
+  function validate_email(field,alerttxt){
+    with(field)
+    {
+      aops=value.indexOf("@")
+      dotpos=value.lastIndexOf(".")
+      if(aops<1||dotpos-aops<3)
+      {
+        alert(alerttxt);return false
+      }else { return true }
+    }
+  }
+  function validate_mobile(field_1,field_2,alerttxt,alerttxt_1){
+    with(field_1){
+    var tel=value
+  }
+  with(field_2){
+    var mobile=value
+  }
+  if(tel.length+mobile.length>0){
+      if(tel.length>7||mobile.length+mobile.indexOf("1")>=11)
+      {
+        return true
+        //alert(alerttxt);return false
+      }else{
+        alert(alerttxt_1); return false
+      }
+    }else{
+      alert(alerttxt); return false
+    }
+}
+  function validate_form(thisform)
+  {
+    with(thisform){
+      if(validate_required(txtLastName,"Did not fill in the name!")==false)
+        {
+          txtLastName.focus();return false
+        }else{
+            if(validate_txtCompany(txtCompany,"Missing your company information!")==false)
+            {
+              txtCompany.focus();return false
+            }else{
+              if(validate_mobile(txtTel,txtMobile,"At least leave us a contact number!","Can you give a correct contact way!")==false){
+                txtTel.focus();return false
+              }else{
+                if(validate_email(txtConfirmEmail,"Your mailbox mail seems not correct!")==false)
+                  {
+                    txtConfirmEmail.focus();return false
+                  }
+                }
+            }
+        }
+    }
+  }
+</script>
+</head>
+<body>
+	<div id="page_wp">
+		<div id="header">
+			<h1>Lighting Fair 12 th</h1>
+		</div>
+		<div id="content">
+			<div class="content_town">
+					<div class="content_1">
+						<div class="town_bg"></div>
+						<div class="town_char">
+							<div class="town_title"><strong>Town</strong>&nbsp;&nbsp;<strong style="color: #003384;">Introduction</strong></div>
+							<div class="town_cont">
+								Guzhen--the Lighting Capital of China, is the biggest professional production base and terminal market of lighting in China. More than 8,000 lighting enterprises are registered in Guzhen,accounting for over 60% of the market share in China, forming a world-famous industrial cluster. Guzhen lighting products are sold to more than 130 countries and regions around the world.
+							</div>
+						</div><!--end town_char-->
+					</div><!--end content_1 tag-->
+					<div class="content_button"></div>
+					<div class="content_2">
+						<div class="town_cont_2">
+							As an annual event, the 11th China (Cuzhen) International lighting Fair & LED Application Show has attracted 614 exhibitors and 64,138 professional buyers form 103 countries and regions around the world. The 12th Lighting Fair will be held at the new Guzhen Exhibition Center, which covers over 30,000 square meters with more than 1,500 standard booths.
+						</div>
+						<div class="town_cont_3">
+							The 12th China(Guzhen) Internation Lighting Fair & LED Application Show will feature the environmental concept, and incite more than 20 professional media and websites and over 30 domestic mass media to cover the event.
+						</div>
+					</div>
+					<div class="content_button"></div>
+					<div class="content_3">
+						<div class="town_cont_4">
+							<strong>
+								The 12th China(Guzhen) International Ligthing Fair & LED Application Show will be a platform for etablishing company image, presenting product information, and searching for ideal partners. We look forward to your visit!
+							</strong></div>
+							<div class="town_cont_5">
+								<div class="cont_buy">buyes numbers and distribution of 20132 Guzhen<br/>international lighting fair</div>
+								<div class="number_buy">2012买家人数：64138</div>
+							</div>
+							<div class="composition">
+								<ul>
+									<li style="color: #44b3ba;">中国大陆 Mainland China&n 95.98%</li>
+									<li style="color: #00aae7; background-position: 0px -30px;">非洲 Africa 0.25%</li>
+									<li style="color: #75c3fa; background-position: 0px -60px;">中，南美洲 Central & South America<br/>0.21%</li>
+									<li style="color: #009643; background-position: 0px -98px;">澳洲及太平洋群岛 Australia & Pacific<br/>Islands 0.11%</li>
+									<li style="color: #85c125; background-position: 0px -134px;">北美洲 North America 0.21</li>
+									<li style="color: #b8dc7b; background-position: 0px -164px;">中东 Middle East 0.71%</li>
+									<li style="color: #f8ef29; background-position: 0px -192px;">欧洲 Europe 0.61%</li>
+									<li style="color: #f8c301; background-position: 0px -230px;">亚洲（中国以外）Asia (Except<br/> China) 1.1%</li>
+									<li style="color: #eb984f; background-position: 0px -277px;">港澳台地区 Hong Kong, Macau and <br/>TaiWan 0.82%</li>
+
+								</ul>
+							</div>
+					</div>
+					<div class="content_button"></div>
+					<div class="cont_form">
+						<form action="http://www.denggle.com/Register/default.php" method="post" onsubmit="return validate_form(this);">
+							<ul>
+								<li>
+									<ul>
+										<li class="form_title" style="margin:20px 0 0 70px; +margin: 0 70px 0 30px;">Title:</li>
+										<li style="margin:20px 0 0 70px; +margin: 0;">
+											<input type="radio" name="selTitle" checked="checked" value="3">Mr. 
+											<input type="radio" name="selTitle" value="4">Miss
+											<input type="radio" name="selTitle" value="5">Mrs.
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li class="form_title" style="margin: 15px 0 0 35px; +margin: 0 70px 0 30px;">Civen Name:</li>
+										<li style="margin:4px 0 0 7px; +float: left;+margin: 0 0px 0 -24px;">
+											<input name="txtFirstName" type="text" size="18">
+										</li>
+										<li class="form_title" style="margin: 15px 0 0 30px; +margin: 0 70px 0 30px;">Surname:</li>
+										<li style="margin: 0 0 0 27px; +float: left; +margin: 0 0px 0 10px;">
+											<input name="txtLastName" type="text">
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li class="form_title" style="margin: 14px 0 0 50px; +margin: 8px 27px 0 52px;">PoSition:</li>
+										<li style=" margin: 0 0 0 7px;+float: left;+margin: 8px 0px 0 0px;">
+											<input name="txtJob" type="text" size="18">
+										</li>
+										<li class="form_title" style="margin: 12px 0 0 5px; +margin: 8px 0 0 18px;">Country/Region:</li>
+										<li style="margin: 0 0 0 3px; +float: left; +margin: 8px 0px 0 16px;">
+											<input size="33" type="text">
+										</li>
+									</ul>
+								</li>
+								
+								<li>
+									<ul>
+										<li class="form_title" style="margin:13px 0 0 58px; +margin: 8px 70px 0 46px;">Company:</li>
+										<li style="margin:0px 0 0 7px; +margin: 8px 0 0 0;">
+											<input type="text" size="54" name="txtCompany">
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li class="form_title" style="margin: 18px 0 0 45px; +margin: 0px 60px 0 40px;">Telephone:</li>
+										<li style="margin: 0 0 0 6px; +float: left;+margin: 0px 0px 0 -18px;">
+											<input type="text" size="18" name="txtTel">
+										</li>
+										<li class="form_title" style="margin: 0 0 0 64px; +margin: 0px 70px 0 30px;">Mobile:</li>
+										<li style="+float: left;+margin: 0 0px 0 0px;">
+											<input size="33" name="txtMobile" type="text">
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li class="form_title" style="margin: 14px 0 0 46px; +margin: 0px 70px 0 30px;">Telephone<br/>(In China)</li>
+										<li style="margin: 0 0 0 5px; +float: left; +margin: 0px 5px 0 0px;">
+											<input type="text" value="+86" name="txtTelCountry" style="width: 29px;">
+										</li>
+										<li style=" +float: left; +margin: 0px 5px 0 0px;">
+											<input type="text"  name="txtTelArea" style="width: 46px;">
+										</li>
+										<li style=" +float: left; +margin: 0px 5px 0 0px;">
+											<input type="text" name="txtChinaTel">
+										</li>
+									</ul>
+								</li>
+								<li>
+									<ul>
+										<li class="form_title" style="margin: 13px 0 0 70px; +margin: 40px 0px 0 -360px;">E-mail:</li>
+										<li style="+float: left;+margin: 35px 0px 0 -130px;">
+											<input type="text" name="txtConfirmEmail" style="width: 265px;">
+										</li>
+									</ul>
+								</li>
+								<li style="margin: 10px 0 0 23px;width: 630px;">
+									What kind of Lighting Equipment you are going to purchase((<b style="color:#8b370f;">You can have more than one choice</b>))<br/>
+									<input type="hidden" name="e" value="true">
+									<input type="checkbox" name="else" value="Electric Light Source">Electric Light Source
+									<input type="checkbox" name="aofls" value="Application of llluminating System">Application of llluminating System
+									<input type="checkbox" name="le" value="Lighting Equipments">Lighting Equipments
+									<input type="checkbox" name="ledin" value="Light Emitting Diode·Industrial">Light Emitting Diode·Industrial
+									<input type="checkbox" name="dleasl" value="Decorative Lighting·Emergency and Safety Lighting">Decorative Lighting·Emergency and Safety Lighting
+									<input type="checkbox" name="easl" value="Entertainment and Stage Lighting">Entertainment and Stage Lighting
+									<input type="checkbox" name="ofice" value="office">office
+									<input type="checkbox" name="aael" value="Aclvertisement and Exhibition Lighting ">Aclvertisement and Exhibition Lighting 
+									<input type="checkbox" name="others" value="others"> Others
+								</li>
+								<li>
+									<input type="submit" value="submit" value="Submit" class="button" style="margin: 13px 77px 0 170px;+margin: 20px 77px 0 170px;"><input type="button" value="Reset"><input type="hidden" name="textcookie" id="wp_user_id" class="button" value='submit'>
+									<input type="hidden" name="txtLanguage" id="wp_user_id" class="button" value='en'>
+								</li>
+								<li style="font-size: 12px; margin: 14px 0 0 30px;+margin: 14px 0 0 50px;">
+									If you can not submit successfully,please click here <a href="http://www.mr_quangdong.com/ygh/index_zs.jsp">http://www.mr_quangdong.com/ygh/index_zs.jsp</a>
+								</li>
+							</ul>
+						</form>
+					</div>
+			</div><!--end content_towntag-->
+		</div><!--end content tag-->
+		<div id="footer">
+			<div><a href="http://www.gzlightingfair.com">www.gzlightingfair.com</a></div>
+		</div><!--end footer tag-->
+	</div>
+	</body>
+</html>

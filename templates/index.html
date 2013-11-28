@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php //echo $system_url?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登记人员后台管理系统</title>
+<!-- Template stylesheet -->
+<link href="templates/css/screen.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/datepicker.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/fancybox/jquery.fancybox-1.3.0.css" rel="stylesheet" type="text/css" media="all">
+<style type="text/css">
+body{ background:#f7f7f7 url(templates/images/bg_left.jpg) repeat-y;}
+iframe{ margin:0px; padding:0px;}
+</style>
+<!--[if IE]>
+	<link href="templates/css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="templates/js/excanvas.js"></script>
+<![endif]-->
+<!-- Jquery and plugins -->
+<script type="text/javascript" src="templates/js/jquery.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.js"></script>
+<script type="text/javascript" src="templates/js/jquery.img.preload.js"></script>
+<script type="text/javascript" src="templates/js/hint.js"></script>
+<script type="text/javascript" src="templates/js/visualize/jquery.visualize.js"></script>
+<script type="text/javascript" src="templates/js/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.3.0.js"></script>
+<script type="text/javascript" src="templates/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="templates/js/custom_blue.js"></script>
+</head>
+
+<body id="allBody">
+<div class="content_wrapper"> 
+	<!-- Begin header -->
+	<div id="header">
+		<div id="logo"> <h1>登记人员后台管理系统</h1></div>
+		<div id="account_info"> <img src="templates/images/icon_online.png" alt="Online" class="mid_align"/> hi, 管理员! 欢迎登录预登记管理系统 !  | <a href="index.php?act=login_out">退出</a> </div>
+	</div>
+	<!-- End header --> 
+	
+	<!-- Begin left panel --> 
+	<a href="javascript:;" id="show_menu">&raquo;</a>
+	<div id="left_menu"><a href="javascript:;" id="hide_menu">&laquo;</a>
+		<ul id="main_menu">
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','main.php')" href="javascript:;"><img src="templates/images/icon_home.png" alt="Home"/>后台主页</a></li>
+			<!--
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','groups.php?act=list')" href="javascript:;"><img src="templates/images/icon_posts.png" alt="Home"/>网站分组</a></li>
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','sites.php?act=list')" href="javascript:;"><img src="templates/images/info.gif" alt="Home"/>网站列表</a></li>
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','order.php?act=list&view=today')" href="javascript:;"><img src="templates/images/icon_pages.png" alt="Pages"/>今日订单</a></li>
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','order.php?act=list&view=all')" href="javascript:;"><img src="templates/images/icon_posts.png" alt="Posts"/>历史订单</a></li> -->
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','order.php?act=register&view=register_toady')" href="javascript:;"><img src="templates/images/icon_pages.png" alt="Posts"/>今日预登记</a></li>
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','order.php?act=register&view=register_all')" href="javascript:;"><img src="templates/images/icon_posts.png" alt="Posts"/>登记记录</a></li>
+			<li><a target="frame_content" onclick="$('#frame_content',parent.document.body).attr('src','manage.php?act=list&view=list')" href="javascript:;"><img src="templates/images/icon_pages.png"/><?php if(isset($_SESSION['user_admin']['3']) && $_SESSION['user_admin']['3']=='0'){?>人员管理<?php }else{?>个人信息<?php }?></a></li>
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','email_template.php?act=list')" href="javascript:;"><img src="templates/images/icon_pages.png" alt="Pages"/>邮件模版列表</a></li>
+			<li><a target="frame_content" onClick="$('#frame_content',parent.document.body).attr('src','email_config.php?act=view')" href="javascript:;"><img src="templates/images/icon_pages.png" alt="Pages"/>邮件服务器配置</a></li>
+		</ul>
+		<br class="clear"/>
+		<!-- Begin left panel calendar -->
+		<div id="calendar"></div>
+		<!-- End left panel calendar --> 
+	</div>
+	<!-- End left panel --> 
+	
+	<!-- Begin content -->
+	<div id="content">
+		<iframe id="frame_content" name="frame_content" frameborder="0" scrolling="no" width="100%" src="main.php"></iframe>
+		<script type="text/javascript">
+		function reinitIframe(){
+		var iframe = document.getElementById("frame_content");
+		try{
+		iframe.height =  iframe.contentWindow.document.documentElement.scrollHeight;
+		}catch (ex){}
+		}
+		window.setInterval("reinitIframe()", 200);
+		</script>
+		<br class="clear"/>
+		<!-- Begin footer -->
+		<div id="footer"> &copy; Copyright 2011 by Yishang </div>
+		<!-- End footer --> 
+	</div>
+	<!-- End content --> 
+</div>
+</body>
+</html>

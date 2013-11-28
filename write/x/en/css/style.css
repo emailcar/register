@@ -1,0 +1,145 @@
+html,body{
+	margin: 0;
+	padding: 0;
+}
+div,h1,h2,h3,h4,h5,h6,ol,li,ul,p,img,a,form,input,button{
+	margin: 0;
+	padding: 0;
+}
+div{
+	display: block;
+}
+ul,ol,li{
+	list-style: none;
+}
+#header{
+	margin: 0 auto;
+	width: 684px;
+	padding: 18px;
+	background: #dedede;
+}
+#header h1{
+	width: 684px;
+	height: 230px;
+	line-height: 30em;
+	overflow: hidden;
+	background: url(../images/header_bg.jpg);
+}
+#content{
+	width: 720px;
+	margin: 0 auto;
+}
+.content_town{
+	margin: 18px;
+}
+.town_bg{
+	width: 264px;
+	height: 206px;
+	margin: 0 10px 0 0;
+	float: left;
+	background: url(../images/content_town.jpg);
+}
+.town_cont{
+	margin: 15px 0 0 0;
+	color: #666464;
+	line-height: 150%;
+	font-weight: 600;
+	font-size: 14px;
+}
+.content_button{
+	clear: both;
+	width: 647px;
+	height: 6px;
+	margin: 30px 0 0 15px;
+	background: #00317d;
+}
+.content_2{
+	width: 686px;
+	height: 520px;
+	background: url(../images/2_bg.png) no-repeat 0 0;
+}
+.town_cont_2{
+	margin: 18px 0 0px 0px;
+	width: 290px;
+	color: #666464;
+	line-height: 140%;
+	font-size: 14px;
+	font-weight: 600;
+}
+.town_cont_3{
+	margin: 267px 0 0 0;
+	color: #666464;
+	line-height: 140%;
+	font-size: 14px;
+	font-weight: 600;
+}
+.town_cont_4{
+	margin: 10px 0;
+	color: #01327e;
+	font-size: 14px;
+}
+.town_cont_5{
+	height: 375px;
+	width: 677px;
+	background: url(../images/5_bg.png) no-repeat 0 0;
+}
+.cont_buy{
+	padding: 260px 0 0 20px;
+	font-weight: 700;
+	color: #333333;
+	font-size: 14px;
+}
+.number_buy{
+	color: #44b3ba;
+	font-weight: 800;
+	padding: 25px 0 0 80px;
+	font-size: 20px;
+}
+.composition{
+	float: right;
+	margin: -340px 10px 0 0px;
+	font-size: 13px;
+}
+.composition li {
+	margin: 12px 0;
+	padding: 0 20px;
+	background: url(../images/li_bg.png) no-repeat 0 0;
+}
+.cont_form {
+	margin: 10px 0;
+	color: #2e2e2e;
+	font-size: 14px;
+	height: 424px;
+	width: 674px;
+	background: url(../images/form_bg.png) no-repeat 0 0;
+}
+.form_title{
+	display: inline-block;
+	+float: left;
+}
+.cont_form li li {
+	 padding: 0;
+	display: inline-block;
+}
+.cont_form td{
+	margin: 0;
+	padding: 0;
+
+}
+td.title{
+	width: 110px;
+}
+#footer{
+	width: 720px;
+	height: 420px;
+	margin: 0 auto;
+	background: url(../images/footer_bg.png) no-repeat 0 0;
+}
+#footer a{
+	display: inline-block;
+overflow: hidden;
+line-height: 10em;
+height: 20px;
+width: 235px;
+margin: 8px 0 0 40px;
+}

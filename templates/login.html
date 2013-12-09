@@ -1,39 +1,84 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<base href="<?php echo $system_url?>" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>YS_Order Manager System</title>
-<link rel="stylesheet" href="templates/css/login.css" type="text/css" media="screen" />
-</head>
 
-<body>
-<div id="hld">
-	<div class="wrapper">
-		<div class="block small center login">
-			<div class="block_head">
-				<div class="bheadl"></div>
-				<div class="bheadr"></div>
-				<h2>灯博会预登记系统 -- Login</h2>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>博华会展内部邮件营销系统-用户登录</title>
+<script src="templates/js/sea.js" id="seajsnode"></script>
+<script type="text/javascript" src="templates/js/jquery-1.js"></script>
+<script type="text/javascript" src="templates/js/alertbox.js"></script>
+<script type="text/javascript" src="templates/js/frontcom.js"></script>
+<link rel="stylesheet/less" href="templates/css/base.less" />
+<style>
+*{margin:0; padding:0;}
+body{font-size:14px; color:#666; font-family:"微软雅黑";}
+img{border:0;}
+dl,ul,ol{list-style-type: none;}
+.clear{ clear:both;}
+.bh_top{ width:950px; margin:25px auto; position:relative;}
+.bh_top_b1{ position:absolute; left:178px; top:12px; font-size:18px;}
+a{ color:#666; text-decoration:none;}
+.bh_top_p1{ position:absolute; right:0; top:15px;}
+.bh_top_a1{ background:url(templates/images/bh_icon1.jpg) no-repeat 0 center; display:inline-block; padding-left:18px;}
+.bh_top_s1{ background:url(templates/images/bh_icon2.jpg) no-repeat 10px center; display:inline-block; padding-left:28px;}
+.bh_top_s2{ color:#f0503d;}
+.bh_mbox{ background:url(templates/images/bh_bg.jpg) no-repeat center 0; height:399px;}
+.bh_m{ position:relative; width:950px; margin:0 auto;}
+.bh_m_img{ position:absolute; top:60px; left:0;}
+.bh_m1{ position:absolute; top:40px; right:0; background:url(templates/images/bh_bg2.png) no-repeat; width:362px; height:325px;}
+.slideTxtBox .hd{ margin:6px 0 0 6px;}
+.slideTxtBox .hd ul li{ width:175px; background:#40464d; height:40px; line-height:40px; text-align:center; font-size:16px; cursor:pointer; float:left; color:#fff;}
+.slideTxtBox .hd ul li a{ color:#fff;}
+.slideTxtBox .hd ul li.on{ background:none; color:#333;}
+.slideTxtBox .bd ul li .div_talbe{ padding:30px 0 0 30px;}
+.bh_i{ background:#fff; width:243px; height:38px; line-height:38px; padding-left:5px; line-height:38px; border:0; font-size:14px; color:#666;}
+.bh_bot{ text-align:center; padding:25px 0;}
+</style></head>
+
+<body style="-moz-user-select: text;">
+<div class="bh_top"><img src="templates/images/bh_logo.jpg"><b class="bh_top_b1">博华会展内部邮件营销系统</b><p class="bh_top_p1"><a href="#" class="bh_top_a1">帮助中心</a><span class="bh_top_s1">技术支持：</span><span class="bh_top_s2">400 8098 021</span>
+</p></div>
+
+<div class="bh_mbox">
+	<div class="bh_m">
+    	<img src="templates/images/bh_png.png" class="bh_m_img">
+        <div class="bh_m1">
+        	<div class="slideTxtBox">
+			<div class="hd">
+				<ul><li class="on">用户登陆</li><li><a href="login.php?way=admin" target="_blank">管理员登陆</a></li></ul>
+                <div class="clear"></div>
 			</div>
-			<div class="block_content">
-				<?php if($messgae){ ?>
-				<div class="message errormsg">
-					<p><?php echo $messgae ?></p>
-					<span title="Dismiss" class="close"></span>
-				</div>
-				<?php }?>
-				<form action="login.php" method="post">
-					<p><label>Account:</label><br><input type="text" class="text" name="username"></p>
-					<p><label>PassWord:</label><br><input type="password" class="text" name="password"></p>
-					<p><input type="submit" value="Login" class="submit"></p>
-					<input type="hidden" name="act" value="login" />
-				</form>
-			</div>
-			<div class="bendl"></div>
-			<div class="bendr"></div>
-		</div>
-	</div>
+			<div class="bd">
+			<form class="loginForm" id="mainLogin" method="post" action="login.php">
+       	    <ul>
+                	<li><div class="div_talbe">
+                        <table border="0" cellpadding="0" cellspacing="0" width="304">
+                          <tbody><tr>
+                            <td align="center" bgcolor="#E66B30" width="54"><img src="templates/images/bh_icon3.jpg"></td>
+                            <td width="250"><input value="请输入您的账号" onfocus="this.value=''" onblur="if(this.value==''){this.value='请输入您的账号'}" class="bh_i" type="text" class="text" name="username"></td>
+                          </tr>
+                        </tbody></table>
+                        </div>
+                        <div class="div_talbe">
+                         <table border="0" cellpadding="0" cellspacing="0" width="304">
+                          <tbody><tr>
+                            <td align="center" bgcolor="#ffb849" width="54"><img src="templates/images/bh_icon4.jpg"></td>
+                            <td width="250"><input class="bh_i" id="password" type="password" class="text" name="password"></td>
+                          </tr>
+                        </tbody></table>
+                        </div>
+                        <div class="div_talbe">
+							<input src="templates/images/bh_btn.jpg" type="image">
+							<input type="hidden" name="act" value="login"/>
+						</div>
+            </li>
+                </ul>
+			</form>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
-</body>
-</html>
+<div class="bh_bot">上海博华国际展览有限公司版权所有（保留一切权利）</div>
+<script src="./js/login.js"></script>
+
+</body></html>

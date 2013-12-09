@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<base href="<?php echo $system_url?>" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>韵贵-数据分析</title>
+<link href="templates/css/screen.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/datepicker.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/css/tipsy.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/visualize/visualize.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/jwysiwyg/jquery.wysiwyg.css" rel="stylesheet" type="text/css" media="all">
+<link href="templates/js/fancybox/jquery.fancybox-1.3.0.css" rel="stylesheet" type="text/css" media="all">
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<script src="templates/js/flotr.js"></script>
+<script type="text/javascript" src="js/Flotr2-master/flotr2.min.js"></script>
+</script>
+<!--[if IE]>
+	<script type="text/javascript" src="js/Flotr2-master/lib/FlashCanvas/bin/flashcanvas.js"></script>
+	<link href="templates/css/ie.css" rel="stylesheet" type="text/css" media="all">
+	<script type="text/javascript" src="templates/js/excanvas.js"></script>
+<![endif]-->
+<!-- Jquery and plugins 
+<script type="text/javascript" src="templates/js/jquery.js"></script>
+<script type="text/javascript" src="templates/js/jquery-ui.js"></script>
+<script type="text/javascript" src="templates/js/jquery.img.preload.js"></script>
+<script type="text/javascript" src="templates/js/hint.js"></script>
+<script type="text/javascript" src="templates/js/visualize/jquery.visualize.js"></script>
+<script type="text/javascript" src="templates/js/jwysiwyg/jquery.wysiwyg.js"></script>
+<script type="text/javascript" src="templates/js/fancybox/jquery.fancybox-1.3.0.js"></script>
+<script type="text/javascript" src="templates/js/jquery.tipsy.js"></script>
+<script type="text/javascript" src="templates/js/custom_blue.js"></script>
+ -->
+<style type="text/css">
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      #container {
+        width : 600px;
+        height: 384px;
+        margin: 8px auto;
+      }
+      #editor-render-0 {
+        width : 600px;
+        height: 384px;
+        margin: 8px auto;
+      }
+    </style>
+    <script type="text/javascript">
+   
+    </script>
+</head>
+
+<body style="margin:0px; padding:0px; width:99%;">
+<h1>欢迎登录 灯博会预登记管理系统</h1>
+<!-- Begin graph window -->
+<div class="onecolumn">
+	<div class="header"> <span>登记情况统计</span>
+		<div class="switch" style="width:200px">
+			<table width="200px" cellpadding="0" cellspacing="0">
+				<tbody>
+					<tr>
+						<td><input type="button" id="chart_bar" name="chart_bar" class="left_switch active" value="Bar" style="width:50px"/></td>
+						<td><input type="button" id="chart_area" name="chart_area" class="middle_switch" value="Area" style="width:50px"/></td>
+						<td><input type="button" id="chart_pie" name="chart_pie" class="middle_switch" value="Pie" style="width:50px"/></td>
+						<td><input type="button" id="chart_line" name="chart_line" class="right_switch" value="Line" style="width:50px"/></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<br class="clear"/>
+	<div class="content">
+		<br class="clear"/>
+		<!--
+		<form id="form_data" name="form_data" action="" method="post">
+			<table id="graph_data" class="data" rel="bar" cellpadding="0" cellspacing="0" width="100%">
+				<caption>
+				<?php foreach($order_stats as $key => $value){ ?>
+				<?php echo $key?> 
+				<?php } ?> 订单数据统计 (YiShang)
+				</caption>
+				<thead>
+					<tr>
+						<td class="no_input">&nbsp;</td>
+						<th>全部登记</th>
+						<th>点击次数</th>
+						<th>登记成功</th>
+						<th>点击率</th>
+						<th>点击登记率</th>
+
+					</tr>
+				</thead>
+				<tbody>
+					<?php foreach($order_stats as $key => $value){ ?>
+					<tr>
+						<th><?php echo $key ?></th>
+						<td><?php echo $value['all_orders'] ?></td>
+						<td><?php echo $value['pay_click_count'] ?></td>
+						<td><?php echo $value['ok_pay'] ?></td>
+						<td><?php echo round($value['pay_click_count']/$value['all_orders']*100,2)?>%</td>
+						<td><?php echo round($value['ok_pay']/$value['pay_click_count']*100,2)?>%</td>
+						<td><?php echo round($value['ok_pay']/$value['all_orders']*100,2)?>%</td>					</tr>
+					<?php } ?>
+				</tbody>
+			</table>
+		-->
+			<table id="graph_data" class="data">
+				<tr>
+					<th>统计列表</th>
+					<td id="button_1" onclick="lines_f()">登记总数</td>
+					<td onclick="sin_c()">到场人数</td>
+					<td onclick="bars_c()">到场人次</td>
+					<td>分会场信息</td>
+				</tr>
+				<tr>
+					<th>数据分析</th>
+					<td id="button_1" onclick="lines_f()">到场人数比例</td>
+					<td>到场人数分析</td>
+					<td>分会场分析</td>
+				</tr>
+			</table>
+			<!--表图-->
+    <!--
+    <div id="container"></div>
+ 
+    <script type="text/javascript">
+      (function () {
+
+        var
+          container = document.getElementById('container'),
+          start = (new Date).getTime(),
+          data, graph, offset, i;
+
+        // Draw a sine curve at time t
+        function animate (t) {
+
+          data = [];
+          offset = 2 * Math.PI * (t - start) / 10000;
+
+          // Sample the sine function
+          for (i = 0; i < 4 * Math.PI; i += 0.2) {
+            data.push([i, Math.sin(i - offset)]);
+          }
+
+          // Draw Graph
+          graph = Flotr.draw(container, [ data ], {
+            yaxis : {
+              max : 2,
+              min : -2
+            }
+          });
+        }
+
+        animate(start);
+      })();
+    </script>
+-->
+    <div id="editor-render-0"></div>
+  <input type="button" id="button_1_x" onclick="lines_f()" class="run_btn" value="生成折线图"></div>
+    <script type="text/javascript">
+	//basic('editor-render-0');
+    </script>
+    <!--表图-->
+    	<?php /* 原图DIV
+			echo '<div id="chart_wrapper" class="chart_wrapper"></div>';'
+		*/?>
+			<!-- End bar chart table-->
+		</form>
+	</div>
+
+</div>
+<!-- End graph window -->
+</body>
+</html>

@@ -199,7 +199,7 @@ if(!empty($_POST['submit'])){
 							setcookie("txtLanguage",$user_news['txtLanguage'],time()+10);
 							*/
 							if($txtLanguage=="ch"){
-								header('Location: templates/default.html?id='.$x.'');
+								header('Location: templates/default.php?id='.$x.'');
 							}elseif($txtLanguage=="en"){
 								require_once('../woyaocanguan/zaixianyudengji/default_en.html');
 							}else{

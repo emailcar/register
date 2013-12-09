@@ -58,5 +58,6 @@ $order_stats[$last_month]['paypal'] = $db->getone("SELECT count(*) FROM ys_order
 $order_stats[$last_month]['yspay'] = $db->getone("SELECT count(*) FROM ys_orders WHERE order_time>= '$last_month_start' AND order_time<= '$last_month_end' AND pay_name = 'yspay'");
 }
 	
-include_once('templates/main.html');
+//include_once('templates/main.html');/*原先订单模板*/
+include_once('templates/main_flotr.html');
 ?>

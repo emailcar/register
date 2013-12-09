@@ -1,0 +1,94 @@
+/*--reset S--*/
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i,dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, menu, nav, section, time, mark, audio, video {margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; } body {line-height:1.8; } article, aside, dialog, figure, footer, header,hgroup, nav, section {display:block; } nav ul {list-style:none; } blockquote, q {quotes:none; } blockquote:before, blockquote:after,q:before, q:after {content:''; content:none; } a {margin:0; padding:0; border:0; font-size:100%; vertical-align:baseline; background:transparent; } ins {background-color:#ff9; color:#000; text-decoration:none; } mark {background-color:#ff9; color:#000; font-style:italic; font-weight:bold; } del {text-decoration: line-through; } abbr[title], dfn[title] {border-bottom:1px dotted #000; cursor:help; } table {border-collapse:collapse; border-spacing:0; } hr {display:block; height:1px; border:0; border-top:1px solid #cccccc; margin:1em 0; padding:0; } input, select {vertical-align:middle; }
+em{font-style:normal;}
+body{font-size:12px;line-height:1.8;font-family:\5FAE\8F6F\96C5\9ED1;}
+html,body{height:100%;}
+img{vertical-align: middle;}
+a{color:#666;text-decoration: none;}
+a:hover{color:orange;}
+input{padding:0;margin:0;}
+
+/*--form rest S--*/
+input{color:black;}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder{color:#999;}
+.ie-placeholder{color:#999;}
+input::-moz-placeholder,
+textarea::-moz-placeholder{color:#999;opacity:1;}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder{color:#999;}
+
+/*--form rest E--*/
+/*--reset E--*/
+/*--com style E*/
+	/*--btn S--*/
+.com-btnfn1(@bgcolor:#E55E31,@height:30px,@color:white,@shadowcolor:rgba(0,0,0,0.3)){
+	display:inline-block;*display:inline;*zoom:1;
+	height:@height;line-height:@height;background-color:@bgcolor+#111;color:@color;font-size:14px;padding-left:1.2em;padding-right:1.2em;border-style:solid;border-width:1px;border-color:@bgcolor;
+	text-align:center;text-shadow:0px 1px 0px @shadowcolor;
+	input{
+	display:inline;float:left;
+	height:@height;background:none;border:none;
+	color:@color;font-size:14px;text-shadow:0px 1px 0px @shadowcolor;font-family:\5FAE\8F6F\96C5\9ED1;cursor:pointer;
+	}
+}
+.com-btn1{
+	.com-btnfn1();
+	/*--btn E--*/	
+/*--com style E*/
+}
+/*--login page S--*/
+.loginBody {
+background-color:#CCC;
+background: -webkit-radial-gradient(center, #E6E6E6, #CCCCCC);
+}
+.loginBody .inner{padding-top:15%;}
+.login-form{	
+	width:426px;margin-left:auto;margin-right:auto;
+	.login-main{
+	margin-bottom:25px;padding-top:31px;
+	border-top:1px solid #EDEDED;	
+	border-bottom:1px solid #CFCFCF;
+	box-shadow:0px 1px 0px #EDEDED,0px -1px 0px #CFCFCF;
+		h1{
+		margin-bottom:34px;line-height:36px;padding-left:10px;
+		font-size:20px;color:#464646;
+		a.logo{
+			display:inlne-block;padding-right:20px;
+			}
+		}
+		.list-input{	
+			position: relative;
+			padding-left:48px;
+			margin-bottom:34px;
+			.input-text{
+				display:block;
+				width:100%;height:14px;padding-top:12px;padding-bottom:12px;border:none;text-indent:1em;
+				color:#333;font-size:14px;
+			}
+			.ico-user,
+			.ico-pass{
+				position:absolute;left:0;top:0;display:block;
+				width:48px;height:38px;
+				text-align:center;
+				em{
+				display:inline-block;overflow:hidden;
+				width:12px;height:12px;line-height:999;
+				background:url(../images/ico/icos-white.png) no-repeat;vertical-align:middle;
+				}
+				i{
+				display:inline-block;width:0;height:100%;overflow:hidden;margin-left:-1px;font-size:0;line-height:0;vertical-align:middle;
+				}
+			}
+			.ico-user{background-color:#E86134;}
+			.ico-pass{background-color:#FFB848;}
+			.ico-user em{background-position:-169px -1px;}
+			.ico-pass em{background-position:-288px -26px;}
+		}
+	}
+	.login-submit{
+		text-align:center;
+	}
+}
+
+/*--login page E--*/

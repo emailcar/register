@@ -36,6 +36,9 @@ if(isset($_REQUEST['act']) && $_REQUEST['act'] == 'login')
 		$messgae = '用户名或密码错误!';
 	}
 }
-
-include_once('templates/login.html');
+if(isset($_GET['way']) && isset($_GET['way'])=='admin'){
+	include_once('templates/admin_login.html');
+}else{
+	include_once('templates/login.html');
+}
 ?>

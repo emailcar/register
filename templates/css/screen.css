@@ -75,9 +75,13 @@ table.data tr td, table.data tr th { border-bottom:1px solid #ccc; }
 table.data tr th { font-weight:bold; background:#eee; }
 table.data tr th, table.data tr td { padding:7px; }
 table.data tr td { color:#666; }
+table#graph_data{
+	width: 100%;
+	border: 2px ridge #E4E4E4;;
+}
 table#graph_data th { text-align:center; }
 table#graph_data td { cursor:pointer; text-align:center; }
-table#graph_data td.hover { background:#fff5d3; }
+table#graph_data td:hover { background:#fff5d3; }
 .chart_wrapper { padding-left:20px; position:relative; top:5px; }
 .twocolumn { width:100%; margin:20px 0 20px 0; }
 .column_left, .column_right { width:49%; background:#fff; border:1px solid #cdcdcd; -moz-border-radius:5px; -webkit-border-radius:5px; -moz-box-shadow:0 1px 4px #ccc; -webkit-box-shadow:0 1px 2px #ccc; box-shadow:0 1px 2px #ccc; float:left; }

@@ -161,7 +161,7 @@ display: block;
         <div class="new_title">您的ID号为：</div><div class="new_cont"><?php echo $user_array['id']?></div><br/>
         <div class="new_title">您的邮箱为：</div><div class="new_cont"><?php echo $user_array['user_email']?></div><br/>
         <div class="new_title">您的公司为：</div><div class="new_cont"><?php echo $user_array['user_company']?></div><br/>
-        <div class="new_title"> 二维码：</div><div class="new_cont"><?php $code_content = $user_array['id']; include '../includes/code.php';?></div>
+        <div class="new_title"> 二维码：</div><div class="new_cont"> <img src="../includes/code.php?code_content=<?php echo $user_array['id'];?>"/></div>
         <div class="span_title" style="">温馨提示：您可以凭借二维码信息到会场办理登记卡！</div>
     </div><!--end page_con-->
     <div id="footer">

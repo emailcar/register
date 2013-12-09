@@ -27,7 +27,7 @@ $paypal_cancel_return = 'http://www.marry-inc.com/paypal/respond.php?code=return
 $default_pay = 'ecpss';
 
 //数据库
-$db_host = "127.0.0.1";// database host
+$db_host = "localhost";// database host
 $db_name = "marryys";// database name
 $db_user = "root";// database username
 $db_pass = 'ningmysql';// database password

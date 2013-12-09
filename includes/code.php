@@ -8,22 +8,23 @@
 	//chld=<error_correction_level>|<margin> 纠错水平与边界空白
 	$cht = 'qr';
 	$chs = '200';
-	$chl = $code_content;
+	$chl = isset($_GET["code_content"])?$_GET["code_content"]:' ';
 	$choe = 'UTF-8';
 	$chld = 'Q|2';
-	$logo = 'images/logo.jpg';
-	class MyQrcode{
-		public function creta_qr($cht,$chs,$chl,$choe,$chld){
-			$qr = 'https://chart.googleapis.com/chart?cht='.$cht.'&chs='.$chs.'x'.$chs.'&chld='.$chld.'&chl='.urlencode($chl).'&choe='.$choe.'';
+	$logo = '../templates/images/logo.jpg';
+	//class MyQrcode{
+		//public function creta_qr($cht,$chs,$chl,$choe,$chld){
+			$qr = 'http://chart.googleapis.com/chart?cht='.$cht.'&chs='.$chs.'x'.$chs.'&chld='.$chld.'&chl='.urlencode($chl).'&choe='.$choe.'';
 			//example : https://chart.googleapis.com/chart?chs=150x150&cht=qr&chl=Hello%20world&choe=UTF-8
 			//echo 'google不带logo<br/><img src="'.$qr.'"><br/>二维码<br/>';
-			return $qr;
-		}
-		public function creta_img($cht,$chs,$chl,$choe,$chld,$logo){
+			//return $qr;
+		//}
+		//public function creta_img($cht,$chs,$chl,$choe,$chld,$logo){
+			$qr_png = imagecreatefrompng($qr);
 			$logo = imagecreatefromstring(file_get_contents($logo));
-			$qr_png = $this->creta_qr($cht,$chs,$chl,$choe,$chld);
+			//$qr_png = $qr; //$this->creta_qr($cht,$chs,$chl,$choe,$chld);
 			if($qr_png){
-				$qr_png = imagecreatefrompng($qr_png);
+				
 				$qr_width = imagesx($qr_png);
 				$qr_height = imagesy($qr_png);
 				$logo_width = imagesx($logo);
@@ -36,13 +37,15 @@
 				//echo $qr_png.'>>'.$logo.'>>'.$dst_x.'>>'.$dst_y.'>>'.$qr_width.'>>'.$qr_height.'>>'.$logo_create_width.'>>'.$logo_create_height;
 				imagecopyresampled($qr_png,$logo,$dst_x,$dst_x,0,0,$logo_create_width,$logo_create_height,$logo_width,$logo_height);
 	            //imagecreatefromstring($qr_png);
-	            imagepng($qr_png,'x.png');
-	            imagedestroy($qr_png);
-	        }
-		}
+	            //imagepng($qr_png,'x.png');
+	            //imagedestroy($qr_png);
+	       }
+	       	    header('Content-type:image/png');
+				imagepng($qr_png);
+				imagedestroy($qr_png);
+		//}
 		
-	}
-	$googleapi = new MyQrcode();
-	$height = $googleapi->creta_img($cht,$chs,$chl,$choe,$chld,$logo);
+	//}
+	///$googleapi = new MyQrcode();
+	//$height = $googleapi->creta_img($cht,$chs,$chl,$choe,$chld,$logo);
 ?>
-<div><img src="x.png" style="width:<?php echo $chs;?>;height:<?php echo $chs?>;"></img></div>

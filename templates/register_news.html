@@ -195,7 +195,7 @@
 		</td>
 		</tr>
 		<tr>
-			<th scope="row" align="right">二维码：</th><td><?php $code_content = $user_news['id']; include 'includes/code.php';?></td>
+			<th scope="row" align="right">二维码：</th><td><img src="includes/code.php?code_content=<?php echo $user_news['id'];?>" alt="二维码"></td>
 		</tr>
 	</table>
 	<h3>更改标记状态</h3><hr />

@@ -322,9 +322,9 @@ function register_get_mysql($page_size,$page_index,$numeric_count,$start_time,$e
 	}
 
 	if($start_time){
-		$sql.= ' AND date(date)>\''.$start_time.'\' and date(date)<\''.$end_time.'\' ORDER BY  `date` DESC LIMIT '.$pcount.','.$page_size.'';
+		$sql.= ' AND date>\''.$start_time.'\' and date<\''.$end_time.'\' ORDER BY  `date` DESC LIMIT '.$pcount.','.$page_size.'';
 	}else{
-		$sql.= ' ORDER BY  `date` DESC LIMIT '.$pcount.','.$page_size.'';
+		$sql.= ' AND date<\''.$end_time.'\' ORDER BY  `date` DESC LIMIT '.$pcount.','.$page_size.'';
 		}
 	
 	//echo $sql;
@@ -361,7 +361,9 @@ function fint_numeric_count($start_time,$end_time,$news_name,$computer_name,$sta
 	}
 	
 	if($start_time){
-		$sql.= ' AND date(date)>\''.$start_time.'\' and date(date)<\''.$end_time.'\' ';
+		$sql.= ' AND date>\''.$start_time.'\' AND date<\''.$end_time.'\' ';
+	}else{
+		$sql.= ' AND date<\''.$end_time.'\' ';
 	}
 	
 	return $GLOBALS['db']->get_register_one($sql);//条件查询总人数
@@ -373,9 +375,9 @@ function fint_numeric_count($start_time,$end_time,$news_name,$computer_name,$sta
 function register_get_number($start_time,$end_time){
 	//echo '开始时间'.$start_time;
 	if($start_time){
-		$sql = 'SELECT * FROM user_news  WHERE date(date)>\''.$start_time.'\' and date(date)<\''.$end_time.'\' ';
+		$sql = 'SELECT * FROM user_news  WHERE date>\''.$start_time.'\' and date<\''.$end_time.'\' ';
 	}else{
-		$sql = 'SELECT * FROM user_news WHERE 1';
+		$sql = 'SELECT * FROM user_news WHERE date<\''.$end_time.'\' ';
 	}
 	//echo $sql;
 	$res = $GLOBALS['db']->get_register_one($sql);

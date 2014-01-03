@@ -169,7 +169,7 @@ if(!empty($_POST['submit'])){
 						//require_once('../woyaocanguan/zaixianyudengji/default_en.html');
 						*/
 						//$user_array = find_rigister_news($x);
-						header('Location: templates/default.html?id='.$x.'');
+						header('Location: templates/default.php?id='.$x.'');
 						//echo '<script type="text/javascript">alert("您已经成功提交过该信息！")</script>';
 					
 					}else{
@@ -199,7 +199,7 @@ if(!empty($_POST['submit'])){
 							setcookie("txtLanguage",$user_news['txtLanguage'],time()+10);
 							*/
 							if($txtLanguage=="ch"){
-								header('Location: templates/default.php?id='.$x.'');
+								header('Location: templates/default.html?id='.$x.'');
 							}elseif($txtLanguage=="en"){
 								require_once('../woyaocanguan/zaixianyudengji/default_en.html');
 							}else{

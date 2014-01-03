@@ -141,7 +141,7 @@ $(document).ready(function(){
 	<div class="header"> 
 		<span><?php echo $page_title;?></span> 
 		<div class="total" style="margin-left:10px;float:left;margin-top:-2px">
-			<span>总量：<font color="orange" size="4">12837<!-- <?php echo $select_register_number?>  --></font>
+			<span>总量：<font color="orange" size="4"><?php echo $select_register_number?></font>
 			<!--&nbsp;&nbsp;点击：<font color="green" size="4"><?php echo $payclickcount?></font>&nbsp;&nbsp;已付款总量：<font color="green" size="4"><?php echo $success?></font>成功金额：<font color="green" size="4"><?php echo $summoney?>USD</font>&nbsp;&nbsp; CR:<?php echo $ordersCR ?>% &nbsp;&nbsp;  CPR:<?php echo $ordersCPR ?>%&nbsp;&nbsp;  PR:<?php echo $ordersPR ?>% -->
 			</span>
 		</div>
@@ -161,6 +161,8 @@ $(document).ready(function(){
 						<option value="cancel_query">未标记</option>
 					</select>
 				</label>
+				<?php
+				/*
 				<label>来源：
 					<select name="news_source_query">
 						<option value=""></option>
@@ -168,6 +170,7 @@ $(document).ready(function(){
 						<option value="user_me">批量</option>
 					</select>
 				</label>
+				*/?>
 				<input type="submit" class="button" value="查询">
 				查询总量：<?php echo $register_list->total_records?>
 				<input type="hidden" name="act" value="register"/>

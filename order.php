@@ -121,19 +121,20 @@ if(isset($_REQUEST['act']) && $_REQUEST['act'] == 'register')
 	
 	$type = isset($_REQUEST['view']) ? $_REQUEST['view'] : 'register_toady';
 	$page_index = isset($_REQUEST['page_index']) ? $_REQUEST['page_index'] : 1;//页码数
-	
+	$timezone = "Asia/Shanghai"; 
+	if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
 	$start_time = 0;
-	$end_time = 0;
+	$end_time = date("Y-m-d H:i:s");
 	
 	if($type == 'register_toady')
 	{
 		$page_title = "今日预登记";
 		$timezone = "Asia/Shanghai"; 
 		if(function_exists('date_default_timezone_set')) date_default_timezone_set($timezone);
-		$date = date("y-m-d");
+		$date = date("Y-m-d");
 		$start_date = strtotime("-1 days");
-		$start_time = date("y-m-d",$start_date).' 23:59:59';
-		$end_time = $date.' 23:59:59';
+		$start_time = date("Y-m-d",$start_date).' 23:59:59';
+		$end_time = date("Y-m-d H:i:s");//new $date.' 23:59:59';
 	}
 	$total=find_order_count($start_time,$end_time,0,'','4',$site_ids,'');//查询所有
 	$badTotal=find_order_count($start_time,$end_time,0,'','2',$site_ids,'');
